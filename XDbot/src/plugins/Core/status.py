@@ -27,7 +27,7 @@ async def get_status():
         int(_swp.used / 1024 / 1024 / 1024 * 100) / 100,
         int(_swp.total / 1024 / 1024 / 1024 * 100) / 100
     ]
-    # Status Text
+    # Return
     return f"""运行状态：
 处理器：{cpu[0]} / {cpu[1]}%
 运行内存：{mem[0]} / {mem[1]}GB ({mem_percent}%)
