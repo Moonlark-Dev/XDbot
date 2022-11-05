@@ -22,6 +22,14 @@ for file in files:
     else:
         logger.info(f"Checking file: {file['path']}")
         if not os.path.isfile(file["path"]):
-            with open(file["path"], "w", encoding="utf-8") as f:
-                f.write(file["default"])
+            if file["default"]["file"]:
+                # Copy file
+                with open(file["default"]["path"].replace("${PluginDir}", path),
+                        mode="rb", encoding="utf-8") as f1:
+                    with open(file["default"]["path"], "wb",
+                            encoding="utf-8") as f2:
+                        f2.write(f1.read())
+            else:
+                with open(file["path"], "w", encoding="utf-8") as f:
+                    f.write(file["default"])
 logger.info("Done")
