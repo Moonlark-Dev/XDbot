@@ -9,6 +9,7 @@ from . import about
 from . import help
 from . import fanyi
 from . import ping
+from . import preview
 
 # Import libraries
 from nonebot.log import logger

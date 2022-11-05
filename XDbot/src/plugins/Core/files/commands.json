@@ -47,5 +47,12 @@
     "msg": "关于 XDbot",
     "usage": ["about"],
     "enable": true
+  },
+  "preview": {
+    "name": "preview",
+    "info": "预览网页",
+    "msg": "预览网页"，
+    "usage": ["preview <URL>"],
+    "enable": true
   }
 }
