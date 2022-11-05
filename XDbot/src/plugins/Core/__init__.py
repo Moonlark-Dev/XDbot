@@ -7,6 +7,7 @@ from . import st
 from . import jrrp
 from . import help
 from . import fanyi
+from . import ping
 
 # Import libraries
 from nonebot.log import logger
