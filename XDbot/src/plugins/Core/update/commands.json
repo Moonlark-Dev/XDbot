@@ -4,5 +4,6 @@
         "info": "获取帮助",
         "msg": "获取帮助",
         "usage": ["help", "help <command>"]
+	"enable": true
     }
 }

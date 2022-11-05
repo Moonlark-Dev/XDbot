@@ -9,7 +9,7 @@
   },
   {
     "is_dir": false,
-    "path": "./data/commands.json",
+    "path": "./data/help/commands.json",
     "default": {"file": true, "path": "${PluginDir}/update/commands.json"}
   }
 ]
