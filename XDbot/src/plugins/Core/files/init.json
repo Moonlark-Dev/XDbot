@@ -10,6 +10,6 @@
   {
     "is_dir": false,
     "path": "./data/help/commands.json",
-    "default": {"file": true, "path": "${PluginDir}/update/commands.json"}
+    "default": {"file": true, "path": "${PluginDir}/files/commands.json"}
   }
 ]

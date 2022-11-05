@@ -14,7 +14,7 @@ import json
 
 # Check files
 path = os.path.dirname(os.path.abspath(__file__))
-files = json.load(open(os.path.join(path, "init.json")))
+files = json.load(open(os.path.join(path, "files/init.json")))
 for file in files:
     if file["is_dir"]:
         logger.info(f"Checking directory: {file['path']} . . .")
