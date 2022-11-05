@@ -2,5 +2,14 @@
   {
     "is_dir": true,
     "path": "./data"
+  },
+  {
+    "is_dir": true,
+    "path": "./data/help"
+  },
+  {
+    "is_dir": false,
+    "path": "./data/commands.json",
+    "default": {"file": true, "path": "${PluginDir}/update/commands.json"}
   }
 ]
