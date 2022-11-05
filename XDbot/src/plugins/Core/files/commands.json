@@ -40,5 +40,12 @@
     "msg": "PING指定主机并显示所有日志",
     "usage": ["ping-f <主机>"],
     "enable": true
+  },
+  "about": {
+    "name": "about",
+    "info": "关于 XDbot",
+    "msg": "关于 XDbot",
+    "usage": ["about"],
+    "enable": true
   }
 }

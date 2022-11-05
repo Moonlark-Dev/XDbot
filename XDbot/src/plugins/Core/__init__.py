@@ -5,6 +5,7 @@
 from . import status
 from . import st
 from . import jrrp
+from . import about
 from . import help
 from . import fanyi
 from . import ping
