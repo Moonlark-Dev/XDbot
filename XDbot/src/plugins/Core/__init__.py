@@ -31,4 +31,10 @@ for file in files:
             else:
                 with open(file["path"], "w", encoding="utf-8") as f:
                     f.write(file["default"])
+# Help
+help_dict = json.load(open(
+    os.path.join(path, "files/commands.json")))
+help_dict.update(json.load(open("./data/help/commands.json")))
+json.dump(help_dict, open("./data/help/commands.json","w"))
+
 logger.info("Done")
