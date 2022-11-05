@@ -1,4 +1,4 @@
-from . import config
+from . import __config__ as config
 import nonebot
 import nonebot.adapters.onebot.v11.bot
 import nonebot.adapters.onebot.v11.event
@@ -14,7 +14,7 @@ helplist = nonebot.on_command("help")
 @helplist.handle()
 async def help_handle(
         args: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
-    ):
+):
     # Read command list
     command_list = json.load(
         open(
@@ -22,7 +22,7 @@ async def help_handle(
                 os.path.abspath("."),
                 "data/help/commands.json"
             ),
-            encoding = "utf-8"
+            encoding="utf-8"
         )
     )
     if str(args) == "":
@@ -50,7 +50,7 @@ async def help_handle(
             length += 1
         if not command["enable"]:
             answer += "\n警告：指令被标记为不可用"
-        await helplist.finish(answer, at_sender = True)
+        await helplist.finish(answer, at_sender=True)
 
 # TODO 移动到 Admin 插件中
 """
