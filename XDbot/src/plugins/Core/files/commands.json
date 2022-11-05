@@ -10,6 +10,14 @@
     "name": "jrrp",
     "info": "今日人品",
     "msg": "查询今日人品",
-    "usage": ["jrrp"]
+    "usage": ["jrrp"],
+    "enable": true
+  },
+  "status": {
+    "name": "status",
+    "info": "系统状态",
+    "msg": "查看系统状态",
+    "usage": ["status"],
+    "enable": true
   }
 }
