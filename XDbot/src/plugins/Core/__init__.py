@@ -6,6 +6,7 @@ from . import status
 from . import st
 from . import jrrp
 from . import help
+from . import fanyi
 
 # Import libraries
 from nonebot.log import logger
