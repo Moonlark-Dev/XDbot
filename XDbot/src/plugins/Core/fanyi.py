@@ -6,7 +6,7 @@ import requests
 import json
 
 @commands.translate.handle()
-async def _(
+async def translate_handle(
     message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
     keyword = message.extract_plain_text()
