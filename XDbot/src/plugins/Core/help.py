@@ -27,13 +27,13 @@ async def help_handle(
     if str(args) == "":
         # Command List
         # TODO 多页面支持
-        commands = f"指令列表 —— {config.bot_nickname}\n"
+        answer = f"指令列表 —— {config.bot_nickname}\n"
         for command in command_list.keys():
             command_data = command_list[command]
             if command_data["enable"]:
-                commands += f"[√] {command_data['name']}: {command_data['info']}\n"
-        commands += config.command_help.list_backhander
-        await commands.helplist.finish(commands)
+                answer += f"[√] {command_data['name']}: {command_data['info']}\n"
+        answer += config.command_help.list_backhander
+        await commands.helplist.finish(answer)
     else:
         try:
             command = command_list[args.extract_plain_text()]
