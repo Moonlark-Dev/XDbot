@@ -1,9 +1,15 @@
 {
-    "help": {
-        "name": "help",
-        "info": "获取帮助",
-        "msg": "获取帮助",
-        "usage": ["help", "help <command>"],
-	"enable": true
-    }
+  "help": {
+    "name": "help",
+    "info": "获取帮助",
+    "msg": "获取帮助",
+    "usage": ["help", "help <command>"],
+    "enable": true
+  },
+  "jrrp": {
+    "name": "jrrp",
+    "info": "今日人品",
+    "msg": "查询今日人品",
+    "usage": ["jrrp"]
+  }
 }
