@@ -97,5 +97,4 @@ async def _(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
         json.dump(command_list, open("./data/help/commands.json", "w", encoding = "utf-8"))
 
         await helpadmin.finish("完成")
-
 """
