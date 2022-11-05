@@ -5,15 +5,20 @@ import nonebot.params
 import os
 import asyncio
 
+if os.name == "nt":
+    count_arg = "-n"
+else:
+    count_arg = "-c"
+
 
 async def ping(url):
-    cmd  = os.popen(f"ping \"{url}\"")
+    cmd  = os.popen(f"ping \"{url}\" {count_arg} 4")
     text = cmd.read()
     answ = text.split("\n\n")[1]
     await commands.ping.finish("\n" + answ, at_sender = True)
 
 async def ping_full_log(url):
-    cmd  = os.popen(f"ping \"{url}\"")
+    cmd  = os.popen(f"ping \"{url}\" {count_arg} 4")
     text = cmd.read()
     await commands.ping_full_log.finish("\n" + text, at_sender = True)
 
