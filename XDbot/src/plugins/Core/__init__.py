@@ -25,10 +25,8 @@ for file in files:
         if not os.path.isfile(file["path"]):
             if file["default"]["file"]:
                 # Copy file
-                with open(file["default"]["path"].replace("${PluginDir}", path),
-                        mode="rb", encoding="utf-8") as f1:
-                    with open(file["default"]["path"], "wb",
-                            encoding="utf-8") as f2:
+                with open(file["default"]["path"].replace("${PluginDir}", path), mode="rb") as f1:
+                    with open(file["path"], "wb") as f2:
                         f2.write(f1.read())
             else:
                 with open(file["path"], "w", encoding="utf-8") as f:
