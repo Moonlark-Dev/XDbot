@@ -1,4 +1,5 @@
 from nonebot.log import logger
+from . import __config__ as config
 from . import __commands__ as commands
 import nonebot.adapters.onebot.v11
 import nonebot.params
@@ -10,7 +11,7 @@ async def translate_handle(
     message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
     keyword = message.extract_plain_text()
-    req = requests.get(f"https://api.muxiaoguo.cn/api/Tn_tencent?api_key=0120dc0822bf4e67&text={keyword}")
+    req = requests.get(f"https://api.muxiaoguo.cn/api/Tn_tencent?api_key={config.translate.api_key}&text={keyword}")
     data = json.loads(req.text)
     answer = ""
 
