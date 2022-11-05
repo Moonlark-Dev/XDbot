@@ -42,8 +42,7 @@ async def help_handle(
             return await helplist.finish(f"未知指令：{e}")
         # Parsing command
         answer = f"""
-指令名：{command['name']}
-介绍：{command['msg']}
+说明：{command['msg']}
 用法（{len(command['usage'])}）："""
         length = 1
         for usage in command["usage"]:
