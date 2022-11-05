@@ -48,7 +48,8 @@ async def help_handle(
         length = 1
         for usage in command["usage"]:
             answer += f"\n{length}. {config.command_help.command_start}{usage}\n"
-        if not command["enbale"]:
+            length += 1
+        if not command["enable"]:
             answer += "\n警告：指令被标记为不可用"
         await helplist.finish(answer, at_sender = True)
 
