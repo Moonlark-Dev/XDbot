@@ -1,6 +1,6 @@
 # Global Config
 bot_nickname: str = "XDbot"
-version: str = "1.6.3"
+version: str = "1.7.0"
 
 
 # Plugin Config
