@@ -1,9 +1,7 @@
-import nonebot
+from . import __commands__ as commands
 import psutil
 import os.path
 import getpass
-
-status = nonebot.on_command("status")
 
 
 async def get_status():
@@ -36,6 +34,6 @@ async def get_status():
 登录用户：{getpass.getuser()}"""
 
 
-@status.handle()
+@commands.status.handle()
 async def status_handle():
-    await status.finish(await get_status())
+    await commands.status.finish(await get_status())

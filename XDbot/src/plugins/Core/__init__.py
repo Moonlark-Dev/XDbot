@@ -25,7 +25,8 @@ for file in files:
         if not os.path.isfile(file["path"]):
             if file["default"]["file"]:
                 # Copy file
-                with open(file["default"]["path"].replace("${PluginDir}", path), mode="rb") as f1:
+                with open(file["default"]["path"].replace("${PluginDir}", path),
+                          mode="rb") as f1:
                     with open(file["path"], "wb") as f2:
                         f2.write(f1.read())
             else:
@@ -35,6 +36,6 @@ for file in files:
 help_dict = json.load(open(
     os.path.join(path, "files/commands.json")))
 help_dict.update(json.load(open("./data/help/commands.json")))
-json.dump(help_dict, open("./data/help/commands.json","w"))
+json.dump(help_dict, open("./data/help/commands.json", "w"))
 
 logger.info("Done")

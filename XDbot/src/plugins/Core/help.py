@@ -1,4 +1,5 @@
 from . import __config__ as config
+from . import __commands__ as commands
 import nonebot
 import nonebot.adapters.onebot.v11.bot
 import nonebot.adapters.onebot.v11.event
@@ -8,10 +9,8 @@ import nonebot.permission
 import json
 import os.path
 
-helplist = nonebot.on_command("help")
 
-
-@helplist.handle()
+@commands.helplist.handle()
 async def help_handle(
         args: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
@@ -27,19 +26,19 @@ async def help_handle(
     )
     if str(args) == "":
         # Command List
-        # TODO Mulitpages
+        # TODO 多页面支持
         commands = f"指令列表 —— {config.bot_nickname}\n"
         for command in command_list.keys():
             command_data = command_list[command]
             if command_data["enable"]:
                 commands += f"[√] {command_data['name']}: {command_data['info']}\n"
         commands += config.command_help.list_backhander
-        await helplist.finish(commands)
+        await commands.helplist.finish(commands)
     else:
         try:
             command = command_list[args.extract_plain_text()]
         except KeyError as e:
-            return await helplist.finish(f"未知指令：{e}")
+            return await commands.helplist.finish(f"未知指令：{e}")
         # Parsing command
         answer = f"""
 说明：{command['msg']}
@@ -50,7 +49,7 @@ async def help_handle(
             length += 1
         if not command["enable"]:
             answer += "\n警告：指令被标记为不可用"
-        await helplist.finish(answer, at_sender=True)
+        await commands.helplist.finish(answer, at_sender=True)
 
 # TODO 移动到 Admin 插件中
 """

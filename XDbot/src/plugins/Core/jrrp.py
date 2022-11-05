@@ -1,12 +1,10 @@
-import nonebot
+from . import __commands__ as commands
 import nonebot.adapters.onebot.v11.event
 import random
 import time
 
-jrrp = nonebot.on_command("jrrp")
 
-
-@jrrp.handle()
+@commands.jrrp.handle()
 async def jrrp_handle(event: nonebot.adapters.onebot.v11.message.MessageEvent):
     qq = int(event.get_user_id())
     localtime = time.localtime(time.time())
@@ -36,4 +34,4 @@ async def jrrp_handle(event: nonebot.adapters.onebot.v11.message.MessageEvent):
     else:
         msg = ""
 
-    await jrrp.finish(f"你今天的人品值是：{luck}{msg}", at_sender=True)
+    await commands.jrrp.finish(f"你今天的人品值是：{luck}{msg}", at_sender=True)
