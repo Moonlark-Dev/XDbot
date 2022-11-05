@@ -6,7 +6,7 @@ st = nonebot.on_command("st")
 
 
 @st.handle()
-async def _():
+async def st_handle():
     try:
         await st.finish(
             nonebot.adapters.onebot.v11.message.Message(
