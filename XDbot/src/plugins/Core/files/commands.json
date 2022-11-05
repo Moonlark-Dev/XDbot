@@ -3,7 +3,7 @@
     "name": "help",
     "info": "获取帮助",
     "msg": "查看指令列表，或者获取单个指令的帮助信息",
-    "usage": ["help", "help <command>"],
+    "usage": ["help", "help <指令>"],
     "enable": true
   },
   "jrrp": {
@@ -19,5 +19,11 @@
     "msg": "查看系统状态",
     "usage": ["status"],
     "enable": true
+  },
+  "translate": {
+    "name": "translate",
+    "info": "快速翻译",
+    "msg": "快速调用腾讯翻译API",
+    "usage": ["translate <待翻译文本>", "tn <待翻译文本>", "fanyi <待翻译文本>"]
   }
 }
