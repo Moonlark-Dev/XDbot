@@ -1,14 +1,15 @@
 from . import __commands__ as commands
 import nonebot.adapters.onebot.v11.event
+from nonebot.log import logger
 import random
 import time
 
 
 @commands.jrrp.handle()
-async def jrrp_handle(event: nonebot.adapters.onebot.v11.message.MessageEvent):
+async def jrrp_handle(event: nonebot.adapters.onebot.v11.event.MessageEvent):
     qq = int(event.get_user_id())
     localtime = time.localtime(time.time())
-
+    logger.info(qq)
     random.seed(
         qq * (localtime.tm_year + localtime.tm_mon + localtime.tm_mday))
     luck = random.randint(0, 100)

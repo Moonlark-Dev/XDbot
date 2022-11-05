@@ -4,6 +4,7 @@
 # Import modules
 from . import status
 from . import st
+from . import jrrp
 from . import help
 
 # Import libraries
