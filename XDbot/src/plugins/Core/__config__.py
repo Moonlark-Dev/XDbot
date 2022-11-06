@@ -1,16 +1,31 @@
+import time
 import os
 
 # Global Config
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "1.10.3"
+version: str = "1.11.0"
 
 
 # Plugin Config
 class translate:
     # 这里是作者的api_key，可自行前往木小果API申请（腾讯翻译）
     api_key: str = "0120dc0822bf4e67"
+
+
+class email:
+    # 最后一次发件时间
+    latest_send: float = time.time()
+    # 冷却时间，单位秒（为 0 不限制）
+    send_sleep: int = 90
+    # 邮箱 Smtp 服务器
+    smtp_server: str = ""
+    # 邮箱帐号
+    smtp_user: str = ""
+    # 邮箱密码
+    smtp_passwd: str = ""
+    
 
 
 class ping:

@@ -54,5 +54,18 @@
     "msg": "预览网页",
     "usage": ["preview <URL>"],
     "enable": true
-  }
+  },
+  "messenger": {
+    "name": "messenger",
+    "info": "信使",
+    "msg": "信使，让bot带话",
+    "usage": ["messenger <收信人>\n<内容>"],
+    "enable": true
+  },
+  "send-email": {
+    "name": "send-email",
+    "info": "发送邮件",
+    "msg": "发送邮件",
+    "usage": ["send-email <收件人(用空格分割)>\n<主题>\n<正文>"],
+    "enable": true
 }
