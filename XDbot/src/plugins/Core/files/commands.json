@@ -68,5 +68,34 @@
     "msg": "发送邮件",
     "usage": ["send-email <收件人(用空格分割)>\n<主题>\n<正文>"],
     "enable": true
+  },
+  "ct": {
+    "name": "ct",
+    "info": "单群发言排名",
+    "msg": "查询单群发言排名",
+    "usage": ["ct"],
+    "enable": true
+  },
+  "ctg": {
+    "name": "ctg",
+    "info": "全局发言排名",
+    "msg": "查询全局发言排名",
+    "usage": ["ctg"],
+    "enable": true
+  },
+  "mct": {
+    "name": "mct",
+    "info": "单群发言数据",
+    "msg": "查询单群发言数据",
+    "usage": ["mct", "mct <QQ号>", "mct <@QQ>"],
+    "enable": true
+  },
+  "mctg": {
+    "name": "mctg",
+    "info": "全局发言数据",
+    "msg": "查询全局发言数据",
+    "usage": ["mctg", "mctg <QQ号>", "mctg <@QQ>"],
+    "enable": true
   }
+
 }

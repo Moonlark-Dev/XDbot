@@ -16,5 +16,10 @@
     "is_dir": false,
     "path": "./data/messenger.json",
     "default": {"file": false, "text": "[]"}
+  },
+  {
+    "is_dir": false,
+    "path": "./data/ct.json",
+    "default": {"file": false, "text": "{\"global\": {}}"}
   }
 ]
