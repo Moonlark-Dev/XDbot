@@ -36,7 +36,7 @@ for file in files:
                         f2.write(f1.read())
             else:
                 with open(file["path"], "w", encoding="utf-8") as f:
-                    f.write(file["default"])
+                    f.write(file["default"]["text"])
 # Help
 help_dict = json.load(open(
     os.path.join(path, "files/commands.json")))
