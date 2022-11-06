@@ -1,21 +1,44 @@
+from nonebot.log import logger
+from . import __config__ as config
 from . import __commands__ as commands
 import nonebot.adapters.onebot.v11.message
 import nonebot.adapters
 import nonebot.params
 import os
+# import subprocess
 import asyncio
 
-if os.name == "nt":
-    count_arg = "-n"
-else:
-    count_arg = "-c"
+"""
+class new_stdout:
+    def __init__(self):
+        self.print_text = ""
+
+    def write(self, text):
+        self.print_text += text
+        logger.info(text)
+    
+    def fileno(self):
+        pass
+
+    def flush(self):
+        pass
+
+    def get(self):
+        return self.print_text
+"""
 
 
 async def ping(url):
-    cmd  = os.popen(f"ping \"{url}\" {count_arg} 4")
+    cmd  = os.popen(f"ping \"{url}\" {config.ping.count_arg} {config.ping.count}")
+    # TODO ping不阻塞线程
+    # newstdout = new_stdout()
+    # p = subprocess.run(["ping",url,config.ping.count_arg,str(config.ping.count)],
+    #                      stdout=newstdout)
+    # text = newstdout.get()
     text = cmd.read()
     answ = text.split("\n\n")[1]
     await commands.ping.finish("\n" + answ, at_sender = True)
+
 
 async def ping_full_log(url):
     cmd  = os.popen(f"ping \"{url}\" {count_arg} 4")
