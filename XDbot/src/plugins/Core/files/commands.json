@@ -68,4 +68,5 @@
     "msg": "发送邮件",
     "usage": ["send-email <收件人(用空格分割)>\n<主题>\n<正文>"],
     "enable": true
+  }
 }
