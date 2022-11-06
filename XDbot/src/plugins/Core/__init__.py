@@ -9,6 +9,7 @@ from . import about
 from . import help
 from . import fanyi
 from . import ping
+from . import email
 from . import preview
 
 # Import libraries
@@ -37,6 +38,7 @@ for file in files:
             else:
                 with open(file["path"], "w", encoding="utf-8") as f:
                     f.write(file["default"]["text"])
+
 # Help
 help_dict = json.load(open(
     os.path.join(path, "files/commands.json")))
