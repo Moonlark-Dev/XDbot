@@ -52,6 +52,7 @@ async def help_handle(
         await commands.helplist.finish(answer, at_sender=True)
 
 # TODO 移动到 Admin 插件中
+"""
 @commands.helpadmin.handle()
 async def helpadmin_handle(message: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
     args = str(message).split("\n")
@@ -106,3 +107,4 @@ async def helpadmin_handle(message: nonebot.adapters.onebot.v11.message.Message 
             "./data/help/commands.json", "w", encoding="utf-8"))
 
         await commands.helpadmin.finish("完成")
+"""

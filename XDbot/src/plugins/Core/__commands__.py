@@ -14,8 +14,8 @@ ping_full_log = nonebot.on_command("ping-f")
 helplist = nonebot.on_command("help")
 send_email = nonebot.on_command("send-email")
 echo = nonebot.on_command("echo", permission=nonebot.permission.SUPERUSER)
-helpadmin = nonebot.on_command(
-    "help-set", permission=nonebot.permission.SUPERUSER)
+# helpadmin = nonebot.on_command(
+#     "help-set", permission=nonebot.permission.SUPERUSER)
 execute = nonebot.on_command(
     "execute", permission=nonebot.permission.SUPERUSER)
 system = nonebot.on_command("system", aliases={
