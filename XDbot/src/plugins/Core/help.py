@@ -52,48 +52,57 @@ async def help_handle(
         await commands.helplist.finish(answer, at_sender=True)
 
 # TODO 移动到 Admin 插件中
-"""
-helpadmin = on_command("help-set", permission = SUPERUSER)
-@helpadmin.handle()
-async def _(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
-    r = str(args).split("\n")
-    if r[0] == "init":
-        try: os.mkdir("data")
-        except: pass
+@commands.helpadmin.handle()
+async def helpadmin_handle(message: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
+    args = str(message).split("\n")
+    if args[0] == "init":
+        try:
+            os.mkdir("data")
+        except:
+            pass
 
-        try: os.mkdir("./data/help")
-        except: pass
+        try:
+            os.mkdir("./data/help")
+        except:
+            pass
 
-        json.dump({}, open("./data/help/commands.json", "w", encoding = "utf-8"))
+        json.dump({}, open("./data/help/commands.json", "w", encoding="utf-8"))
 
-        await helpadmin.finish("完成")
-    
-    elif r[0] == "edit":
-        command_list = json.load(open("./data/help/commands.json", encoding = "utf-8"))
-        
-        if   r[3] == "True":  r[3] = True
-        elif r[3] == "False": r[3] = False
+        await commands.helpadmin.finish("完成")
 
-        command_list[r[1]][r[2]] = r[3]
-        json.dump(command_list, open("./data/help/commands.json", "w", encoding = "utf-8"))
+    elif args[0] == "edit":
+        command_list = json.load(
+            open("./data/help/commands.json", encoding="utf-8"))
 
-        await helpadmin.finish("完成")
+        if args[3] == "True":
+            args[3] = True
+        elif args[3] == "False":
+            args[3] = False
 
-    elif r[0] == "add":
-        command_list = json.load(open("./data/help/commands.json", encoding = "utf-8"))
-        
-        if   r[3] == "True":  r[3] = True
-        elif r[3] == "False": r[3] = False
-        
-        command           = {}
-        command["name"]   = r[1]
-        command["info"]   = r[2]
-        command["msg"]    = r[3]
-        command["usage"]  = r[4].replace("&#91;\\n&#93;", "\n")
+        command_list[args[1]][args[2]] = args[3]
+        json.dump(command_list, open(
+            "./data/help/commands.json", "w", encoding="utf-8"))
+
+        await commands.helpadmin.finish("完成")
+
+    elif args[0] == "add":
+        command_list = json.load(
+            open("./data/help/commands.json", encoding="utf-8"))
+
+        if args[3] == "True":
+            args[3] = True
+        elif args[3] == "False":
+            args[3] = False
+
+        command = {}
+        command["name"] = args[1]
+        command["info"] = args[2]
+        command["msg"] = args[3]
+        command["usage"] = args[4].replace("&#91;\\n&#93;", "\n")
         command["enable"] = True
 
-        command_list[r[1]] = command
-        json.dump(command_list, open("./data/help/commands.json", "w", encoding = "utf-8"))
+        command_list[args[1]] = command
+        json.dump(command_list, open(
+            "./data/help/commands.json", "w", encoding="utf-8"))
 
-        await helpadmin.finish("完成")
-"""
+        await commands.helpadmin.finish("完成")

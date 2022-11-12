@@ -1,16 +1,17 @@
-from nonebot import on_command, on_message
-from nonebot.adapters.onebot.v11.bot import Bot
-from nonebot.adapters.onebot.v11.event import MessageEvent
-from nonebot.adapters.onebot.v11 import Message
-from nonebot.params import CommandArg
+from . import __commands__ as commands
+import nonebot
+import nonebot.adapters.onebot.v11
+import nonebot.adapters.onebot.v11.event
+import nonebot.adapters.onebot.v11
+import nonebot.params
 import json
 
-messenger = on_command("messenger", aliases={"信使", "msg"})
-sender = on_message()
 
-
-@messenger.handle()
-async def _(event: MessageEvent, message: Message = CommandArg()):
+@commands.messenger.handle()
+async def _(
+    event: nonebot.adapters.onebot.v11.event.MessageEvent,
+    message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
+):
     args = str(message).split("\n")
     data = json.load(open("./data/messenger.json"))
     try:
@@ -25,16 +26,16 @@ async def _(event: MessageEvent, message: Message = CommandArg()):
             }
         ]
     except IndexError:
-        await messenger.finish("参数不足！", at_sender=True)
+        await commands.messenger.finish("参数不足！", at_sender=True)
     except Exception as e:
-        await messenger.finish(f"未知错误：{e}", at_sender=True)
+        await commands.messenger.finish(f"未知错误：{e}", at_sender=True)
     else:
         json.dump(data, open("./data/messenger.json", "w"))
-        await messenger.finish("已添加到信使队列", at_sender=True)
+        await commands.messenger.finish("已添加到信使队列", at_sender=True)
 
 
-@sender.handle()
-async def _(bot: Bot, event: MessageEvent):
+@commands.messenger_sender.handle()
+async def _(bot: nonebot.adapters.onebot.v11.Bot, event: nonebot.adapters.onebot.v11.event.MessageEvent):
     data = json.load(open("./data/messenger.json"))
     length = 0
     qq = event.get_user_id()
@@ -42,8 +43,8 @@ async def _(bot: Bot, event: MessageEvent):
     # 循环检查队列
     for dat in data:
         if dat["to"] == qq:
-            await sender.send(
-                Message(
+            await commands.messenger_sender.send(
+                nonebot.adapters.onebot.v11.message.Message(
                     f"\n发信：{dat['sender']['nick']}({dat['sender']['id']})\n{dat['message']}"
                 ),
                 at_sender=True
