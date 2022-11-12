@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import nonebot
 import nonebot.permission
 
@@ -13,10 +10,13 @@ messenger_sender = nonebot.on_message()
 about = nonebot.on_command("about")
 ping = nonebot.on_command("ping")
 status = nonebot.on_command("status")
-helpadmin = nonebot.on_command("help-set", permission = nonebot.permission.SUPERUSER)
 ping_full_log = nonebot.on_command("ping-f")
 helplist = nonebot.on_command("help")
 send_email = nonebot.on_command("send-email")
-execute = nonebot.on_command("execute", permission=nonebot.permission.SUPERUSER)
 echo = nonebot.on_command("echo", permission=nonebot.permission.SUPERUSER)
-
+helpadmin = nonebot.on_command(
+    "help-set", permission=nonebot.permission.SUPERUSER)
+execute = nonebot.on_command(
+    "execute", permission=nonebot.permission.SUPERUSER)
+system = nonebot.on_command("system", aliases={
+                            "run", "执行", "执行系统指令"}, permission=nonebot.permission.SUPERUSER)
