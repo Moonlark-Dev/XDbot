@@ -27,6 +27,13 @@
     "usage": ["translate <待翻译文本>", "tn <待翻译文本>", "fanyi <待翻译文本>"],
     "enable": true
   },
+  "get": {
+    "name": "get",
+    "info": "发送请求",
+    "msg": "发送一个HTTP(S)请求到指定URL",
+    "usage": ["get <URL>"],
+    "enable": true
+  },
   "ping": {
     "name": "ping",
     "info": "PING指定主机",
@@ -46,6 +53,13 @@
     "info": "关于 XDbot",
     "msg": "关于 XDbot",
     "usage": ["about"],
+    "enable": true
+  },
+  "screenshot": {
+    "name": "screenshot",
+    "info": "截图",
+    "msg": "屏幕截图",
+    "usage": ["screenshot"],
     "enable": true
   },
   "preview": {
@@ -96,6 +110,19 @@
     "msg": "查询全局发言数据",
     "usage": ["mctg", "mctg <QQ号>", "mctg <@QQ>"],
     "enable": true
+  },
+  "system": {
+    "name": "ststem",
+    "info": "执行shell",
+    "msg": "执行shell指令",
+    "usage": ["system <指令>"],
+    "enable": false
+  },
+  "execute": {
+    "name": "execute",
+    "info": "执行Python代码",
+    "msg": "使用eval执行Python代码",
+    "usage": ["execute <代码>"],
+    "enable": false
   }
-
 }

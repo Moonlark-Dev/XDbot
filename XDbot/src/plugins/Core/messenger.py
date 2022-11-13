@@ -1,8 +1,8 @@
 from . import __commands__ as commands
+from nonebot.log import logger
 import nonebot
 import nonebot.adapters.onebot.v11
 import nonebot.adapters.onebot.v11.event
-import nonebot.adapters.onebot.v11
 import nonebot.params
 import json
 
@@ -21,7 +21,7 @@ async def _(
                 "message": str(message).replace(args[0], "").strip(),
                 "sender": {
                     "id": event.get_user_id(),
-                    "nick": event.sender.card
+                    "nick": event.sender.nickname
                 }
             }
         ]
@@ -35,7 +35,8 @@ async def _(
 
 
 @commands.messenger_sender.handle()
-async def _(bot: nonebot.adapters.onebot.v11.Bot, event: nonebot.adapters.onebot.v11.event.MessageEvent):
+async def _(event: nonebot.adapters.onebot.v11.event.MessageEvent):
+    logger.info(event.sender.nickname)
     data = json.load(open("./data/messenger.json"))
     length = 0
     qq = event.get_user_id()

@@ -2,8 +2,13 @@
 # -*- coding: utf-8 -*-
 
 # Import modules
+from . import reboot
+from . import messenger
+from . import system
 from . import status
+from . import geturl
 from . import st
+from . import screenshot
 from . import jrrp
 from . import about
 from . import help
