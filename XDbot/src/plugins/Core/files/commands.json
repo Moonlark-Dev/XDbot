@@ -27,6 +27,13 @@
     "usage": ["translate <待翻译文本>", "tn <待翻译文本>", "fanyi <待翻译文本>"],
     "enable": true
   },
+  "code": {
+    "name": "code",
+    "info": "运行代码",
+    "msg": "运行代码",
+    "usage": ["code <语言>\n<代码>", "code <语言> -i <标准输入>\n<代码>"],
+    "enable": true
+  },
   "get": {
     "name": "get",
     "info": "发送请求",

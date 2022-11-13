@@ -5,13 +5,23 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.0.8"
+version: str = "2.1.0"
 
 
 # Plugin Config
 class translate:
     # 这里是作者的api_key，可自行前往木小果API申请（腾讯翻译）
     api_key: str = "0120dc0822bf4e67"
+
+
+class code:
+    # Token
+    token: str = "a238bd14-14ae-43e4-a7ea-8942edd9b98c"
+    # Header
+    header: dict = {
+        "Authorization": f"Token {token}",
+        "Content-Type": "application/json"
+    }
 
 
 class email:
