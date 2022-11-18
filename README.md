@@ -2,6 +2,10 @@
 
 多功能QQ机器人
 
+## 贡献
+
+您可以通过提交 [Issues](https://github.com/This-is-XiaoDeng/XDbot/issues) 或 [Pull requests](https://github.com/This-is-XiaoDeng/XDbot/pulls) 来帮助改进这个项目
+
 ## TODO
 
 - [ ] 回声洞
