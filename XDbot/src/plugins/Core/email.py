@@ -34,6 +34,7 @@ Subject: {subject}
             logger.info(f"To: {to_addrs}")
             # 发送邮件
             smtp = smtplib.SMTP(config.email.smtp_server)
+            smtp.connect(config.email.smtp_server_host, config.email.smtp_server_port)
             smtp.login(config.email.smtp_user, config.email.smtp_passwd)
             smtp.auth_login()
             smtp.sendmail(

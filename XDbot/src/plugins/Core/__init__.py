@@ -7,6 +7,7 @@ from . import messenger
 from . import system
 from . import status
 from . import geturl
+from . import notice
 from . import code
 from . import st
 from . import screenshot

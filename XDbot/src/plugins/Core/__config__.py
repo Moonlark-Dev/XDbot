@@ -5,7 +5,7 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.1.0"
+version: str = "2.1.1"
 
 
 # Plugin Config
@@ -30,7 +30,8 @@ class email:
     # 冷却时间，单位秒（为 0 不限制）
     send_sleep: int = 90
     # 邮箱 Smtp 服务器
-    smtp_server: str = ""
+    smtp_server_host: str = ""
+    smtp_server_port: int = 23
     # 邮箱帐号
     smtp_user: str = ""
     # 邮箱密码

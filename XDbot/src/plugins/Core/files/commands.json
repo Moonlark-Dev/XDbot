@@ -131,5 +131,12 @@
     "msg": "使用eval执行Python代码",
     "usage": ["execute <代码>"],
     "enable": false
+  },
+  "notice": {
+    "name": "notice",
+    "info": "超级广播",
+    "msg": "对bot所在的所有群进行超级广播",
+    "usage": ["notice <内容>"],
+    "enable": false
   }
 }
