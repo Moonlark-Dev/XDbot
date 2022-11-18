@@ -39,10 +39,10 @@ async def run_code(code, language, stdin):
         data = json.loads(response.read())
         if "message" in data.keys():
             return await commands.code.finish(data["message"])
-        elif not data["error"]:
+        elif not (data["error"] or data["stderr"]):
             return await commands.code.finish(data["stdout"])
         else:
-            return await commands.code.finish(f'Error: {data["error"]}\n{data["stderr"]}')
+            return await commands.code.finish(f'ERROR: {data["error"]}\n{data["stderr"]}')
         
 
 
