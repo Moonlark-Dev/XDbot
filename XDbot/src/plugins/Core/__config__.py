@@ -31,12 +31,11 @@ class email:
     send_sleep: int = 90
     # 邮箱 Smtp 服务器
     smtp_server_host: str = ""
-    smtp_server_port: int = 23
+    smtp_server_port: int = 25
     # 邮箱帐号
     smtp_user: str = ""
     # 邮箱密码
     smtp_passwd: str = ""
-    
 
 
 class ping:

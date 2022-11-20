@@ -15,13 +15,14 @@ async def translate_handle(
     data = json.loads(req.text)
     answer = ""
 
-    logger.info(f"木小果回复：{data}")
+    logger.info(f"Translation server reply {data}")
 
     if data["code"] == 200:
         answer += f'''【翻译结果】
 原文：{data["data"]["Original"]}
 译文：{data["data"]["Translation"]}'''
     else:
+        logger.error(f"Translation server error: {data['msg']}")
         answer += f"失败（{data['code']}）：{data['msg']}"
 
     await commands.translate.finish(answer)

@@ -18,32 +18,37 @@ async def sendemail_handle(
         if argv != "":
             # 获取信息
             to_addrs = argv.split("\n")[0].split(" ")
-            subject = argv.split("\n")[1]
-            message = ""
+            email_subject = argv.split("\n")[1]
+            email_message = ""
             for msg in argv.split("\n")[2:]:
-                message += msg + "\n"
+                email_message += msg + "\n"
             # 解析信息
-            msg = f"""From: {config.email.smtp_user}
-Subject: {subject}
+            sending_message = f"""From: {config.email.smtp_user}
+Subject: {email_subject}
 
-{message}
+{email_message}
 
 ----------------------
 发件人：{event.sender.card}({event.get_user_id()})""".encode("utf-8")
-            logger.info(f"Message: {msg}")
-            logger.info(f"To: {to_addrs}")
+            logger.info(f"Sending {sending_message} to {to_addrs} (use {config.email.smtp_user})")
             # 发送邮件
-            smtp = smtplib.SMTP(config.email.smtp_server)
-            smtp.connect(config.email.smtp_server_host, config.email.smtp_server_port)
-            smtp.login(config.email.smtp_user, config.email.smtp_passwd)
-            smtp.auth_login()
-            smtp.sendmail(
-                from_addr=config.email.smtp_user,
-                to_addrs=to_addrs,
-                msg=msg
-            )
-            smtp.quit()
+            try:
+                smtp = smtplib.SMTP(config.email.smtp_server, config.email.smtp_server_port)
+                smtp.connect(config.email.smtp_server_host, config.email.smtp_server_port)
+                smtp.login(config.email.smtp_user, config.email.smtp_passwd)
+                smtp.auth_login()
+                smtp.sendmail(
+                    from_addr=config.email.smtp_user,
+                    to_addrs=to_addrs,
+                    msg=sending_message
+                )
+                smtp.quit()
+            except Exception as e:
+                logger.error("Error to send email: {e}")
+                return await commands.send_email.finish(f"发送失败\n{e}", at_sender=True)
+            logger.success("Email sent!")
             config.email.latest_send = time.time()
             await commands.send_email.finish("邮件已发送", at_sender=True)
         else:
             await commands.send_email.finish("冷却中！", at_sender=True)
+
