@@ -24,6 +24,34 @@ class code:
     }
 
 
+class cave:
+    # 冷却时间，0为无限制
+    sleep: int = 0
+    # 最后一次随机时间
+    latest_get: float = time.time()
+    # 被删除的cave内容将被替换为此项目
+    removed: str = "[Removed]"
+    # MySQL 数据库设置
+    host: str = "localhost"
+    user: str = "root"
+    password: str = ""
+    database: str = "xdbot"
+    table: str = "cave"
+    # MySQL语句设置
+    get_all_id: str = f"SELECT ID FROM {table} WHERE (MSG != '{removed}')"
+    get_cave: str = f"SELECT * FROM {table} WHERE (ID = %ID%)" 
+    
+
+class cave_reply:
+    # MySQL 数据库设置
+    host: str = cave.host
+    user: str = cave.user
+    password: str = cave.password
+    database: str = cave.database
+    table: str = cave.table + "_reply"
+
+
+
 class email:
     # 最后一次发件时间
     latest_send: float = time.time()
@@ -53,3 +81,7 @@ class command_help:
     command_start: str = "/"
     # 指令列表追加内容
     list_backhander: str = f"使用 {command_start}help <command> 获取更多信息"
+
+class preview:
+    # 测试playwright是否可用
+    test_playwright: bool = True

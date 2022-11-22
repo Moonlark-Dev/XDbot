@@ -13,7 +13,7 @@ async def _(
     message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
     args = str(message).split("\n")
-    data = json.load(open("./data/messenger.json"))
+    data = json.load(open("./data/XDbot/messenger/messenger.json"))
     try:
         data += [
             {
@@ -30,14 +30,14 @@ async def _(
     except Exception as e:
         await commands.messenger.finish(f"未知错误：{e}", at_sender=True)
     else:
-        json.dump(data, open("./data/messenger.json", "w"))
+        json.dump(data, open("./data/XDbot/messenger/messenger.json", "w"))
         await commands.messenger.finish("已添加到信使队列", at_sender=True)
 
 
 @commands.messenger_sender.handle()
 async def _(event: nonebot.adapters.onebot.v11.event.MessageEvent):
     logger.info(event.sender.nickname)
-    data = json.load(open("./data/messenger.json"))
+    data = json.load(open("./data/XDbot/messenger/messenger.json"))
     length = 0
     qq = event.get_user_id()
     sent = []
@@ -57,4 +57,4 @@ async def _(event: nonebot.adapters.onebot.v11.event.MessageEvent):
     for sent_id in sent:
         data.pop(sent_id - length)
         length += 1
-    json.dump(data, open("./data/messenger.json", "w"))
+    json.dump(data, open("./data/XDbot/messenger/messenger.json", "w"))

@@ -1,11 +1,20 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
+from . import __config__ as config
 from . import __commands__ as commands
 import nonebot.adapters.onebot.v11
 import nonebot.params
 import os.path
 from playwright.async_api import async_playwright
+import asyncio
+from nonebot.log import logger
+
+
+async def test_playwright_available():
+    """Test if Playwright is available"""
+    logger.info("Testing whether Playwright is available . . .")
+    async with async_playwright() as p:
+        browser = await p.firefox.launch()
+        await browser.close()
+    logger.success("Playwright is available!")
 
 
 @commands.preview.handle()
@@ -25,3 +34,8 @@ async def preview_handle(
             )
         )
     )
+
+
+if config.preview.test_playwright:
+    asyncio.run(test_playwright_available())
+

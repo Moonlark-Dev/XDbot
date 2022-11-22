@@ -1,33 +1,14 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-# Import modules
-from . import reboot
-from . import messenger
-from . import system
-from . import status
-from . import geturl
-from . import notice
-from . import code
-from . import st
-from . import screenshot
-from . import jrrp
-from . import about
-from . import help
-from . import fanyi
-from . import ping
-from . import email
-from . import preview
-
 # Import libraries
 from nonebot.log import logger
 import os
 import os.path
 import json
+import asyncio
 
 # Check files
+logger.info("Checking files in files.json")
 path = os.path.dirname(os.path.abspath(__file__))
-files = json.load(open(os.path.join(path, "files/init.json")))
+files = json.load(open(os.path.join(path, "files.json")))
 for file in files:
     if file["is_dir"]:
         logger.info(f"Checking directory: {file['path']} . . .")
@@ -46,10 +27,39 @@ for file in files:
                 with open(file["path"], "w", encoding="utf-8") as f:
                     f.write(file["default"]["text"])
 
-# Help
-help_dict = json.load(open(
-    os.path.join(path, "files/commands.json")))
-help_dict.update(json.load(open("./data/help/commands.json")))
-json.dump(help_dict, open("./data/help/commands.json", "w"))
+# Read plugins config
+config = json.load(open("./data/XDbot/plugins.json"))
+
+# Modules
+modules = [
+    "reboot",
+    "messenger",
+    "system",
+    "status",
+    "geturl",
+    "notice",
+    "code",
+    "st",
+    "screenshot",
+    "jrrp",
+    "about",
+    "help",
+    "fanyi",
+    "ping",
+    "email",
+    "preview"
+]
+plugin_modules = {}
+
+# Import modules
+for module in modules:
+    if module not in config["disabled"]:
+        try:
+            plugin_modules[module] = __import__(f"src.plugins.Core.{module}")
+            # logger.warning(dir(plugin_modules[module]))
+            logger.success(f"Loaded module {module}")
+        except Exception as e:
+            logger.error(f"Cannot load module {module}: {e}")
+
 
 logger.info("Done")
