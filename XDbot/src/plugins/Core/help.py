@@ -19,14 +19,14 @@ async def help_handle(
         open(
             os.path.join(
                 os.path.abspath("."),
-                "data/help/commands.json"
+                "data/XDbot/help/commands.json"
             ),
             encoding="utf-8"
         )
     )
     if str(args) == "":
         # Command List
-        # TODO 多页面支持
+        # TODO 多页支持
         answer = f"指令列表 —— {config.bot_nickname}\n"
         for command in command_list.keys():
             command_data = command_list[command]
