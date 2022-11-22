@@ -8,6 +8,7 @@
 
 ## TODO
 
+- [ ] 自动生成help/commands.json
 - [ ] 回声洞
 - [ ] 发言排名
 - [ ] 超级搜索
