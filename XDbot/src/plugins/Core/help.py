@@ -5,7 +5,6 @@ import nonebot.adapters.onebot.v11.bot
 import nonebot.adapters.onebot.v11.event
 import nonebot.adapters.onebot.v11
 import nonebot.params
-import nonebot.permission
 import json
 import os.path
 
