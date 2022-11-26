@@ -54,7 +54,7 @@ async def random_save_pictrue(
 
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
-    if random.random() <= 0.30:
+    if random.random() <= 0.20:
         images = os.listdir("./data/XDbot/reply_images")
         image = random.choice(images)
         image_path = os.path.abspath(f"./data/XDbot/reply_images/{image}")

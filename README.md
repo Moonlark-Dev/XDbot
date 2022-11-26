@@ -8,10 +8,12 @@
 
 ## TODO
 
-- [ ] 自动生成help/commands.json
+- [x] 自动生成help/commands.json
 - [ ] 回声洞
 - [ ] 发言排名
 - [ ] 超级搜索
 - [ ] 计算器
 - [ ] 更详细的`README.md`
 - [ ] WiKi
+- [ ] 签到系统
+- [ ] 智能回复系统
