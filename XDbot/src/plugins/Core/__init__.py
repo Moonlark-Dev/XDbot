@@ -47,7 +47,8 @@ modules = [
     "fanyi",
     "ping",
     "email",
-    "preview"
+    "preview",
+    "reply"
 ]
 plugin_modules = {}
 

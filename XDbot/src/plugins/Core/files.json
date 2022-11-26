@@ -25,6 +25,10 @@
     "path": "./data/XDbot/cave_images"
   },
   {
+    "is_dir": true,
+    "path": "./data/XDbot/reply_images"
+  },
+  {
     "is_dir": false,
     "path": "./data/XDbot/messenger/messenger.json",
     "default": {"file": false, "text": "[]"}
