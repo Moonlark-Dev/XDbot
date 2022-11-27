@@ -28,7 +28,7 @@ class guessnum:
     # Number 请不要修改此项
     number: dict = {}
     # 最大值
-    max: int = 100
+    max: int = 999999
 
 
 

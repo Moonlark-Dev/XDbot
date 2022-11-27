@@ -64,8 +64,7 @@ async def random_save_pictrue(
             and random.random() <= probability:
         logger.info(f"Downloading images in {message}")
         await get_image_cqcode(message)
-        if random.random() <= 0.50:
-            await commands.random_send_pic.send("好图，我的了")
+        await commands.random_send_pic.send("好图，我的了")
 
 
 @commands.random_send_pic.handle()

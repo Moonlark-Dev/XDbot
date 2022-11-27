@@ -6,11 +6,12 @@ import nonebot.adapters.onebot.v11.event
 import nonebot.params
 import random
 import asyncio
+import json
 
 
 async def autoremove(bot, sleep_time, group):
     await asyncio.sleep(sleep_time)
-    if group in config.guessnum.number.keys():
+    if group in list(config.guessnum.number.keys()):
         await bot.send(f"时间到，游戏结束，正确答案：{config.guessnum.number[group]}")
         config.guessnum.number.pop(group)
 
@@ -22,6 +23,7 @@ async def guessnum_handle(
     ):
     argv = message.extract_plain_text().split(" ")
     group = event.get_session_id().split("_")[1]
+    # Start Game
     if argv[0] == "start":
         if group not in config.guessnum.number.keys():
             config.guessnum.number[group] = random.randint(0, config.guessnum.max)
@@ -30,8 +32,10 @@ async def guessnum_handle(
             asyncio.create_task(autoremove(commands.guessnum, 60, config.guessnum.max))
         else:
             await commands.guessnum.finish("游戏已存在")
+    # Ranking
     elif argv[0] == "list":
         await commands.guessnum.finish("敬请期待")
+    # Stop Game
     elif argv[0] == "stop":
         try:
             answer = config.guessnum.number.pop(group)
@@ -40,6 +44,7 @@ async def guessnum_handle(
         else:
             await commands.guessnum.finish(f"游戏结束，正确答案：{answer}")
     else:
+        # Guess number
         try:
             guessed = int(argv[0])
             if guessed == config.guessnum.number[group]:
