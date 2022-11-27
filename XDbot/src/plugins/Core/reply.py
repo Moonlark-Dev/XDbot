@@ -54,9 +54,9 @@ async def random_save_pictrue(
     message = str(event.get_message())
     
     if message.find("subType=1") == -1:
-        probability = 0.05
+        probability = 0.03
     else:
-        probability = 0.10
+        probability = 0.15
 
 
     if message.find("[CQ:image") != -1\
