@@ -6,7 +6,6 @@ import nonebot.adapters.onebot.v11.event
 import nonebot.params
 import random
 import asyncio
-import json
 
 
 async def autoremove(bot, sleep_time, group):
@@ -29,7 +28,7 @@ async def guessnum_handle(
             config.guessnum.number[group] = random.randint(0, config.guessnum.max)
             logger.info(f"Created game in group {group}, answer {config.guessnum.number[group]}")
             await commands.guessnum.finish(f"【猜数字】：游戏已创建，请在60秒内使用 /guess <number> 作答，取值范围 0 <= <number> <= {config.guessnum.max}")
-            asyncio.create_task(autoremove(commands.guessnum, 60, config.guessnum.max))
+            asyncio.create_task(autoremove(commands.guessnum, 60000, config.guessnum.max))
         else:
             await commands.guessnum.finish("游戏已存在")
     # Ranking

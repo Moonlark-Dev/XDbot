@@ -5,7 +5,7 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.3.3"
+version: str = "2.3.4"
 
 
 # Plugin Config
@@ -28,7 +28,7 @@ class guessnum:
     # Number 请不要修改此项
     number: dict = {}
     # 最大值
-    max: int = 999999
+    max: int = 250
 
 
 

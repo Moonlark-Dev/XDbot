@@ -120,28 +120,28 @@
   },
   "system": {
     "name": "ststem",
-    "info": "执行shell（S）",
+    "info": "执行shell(S)",
     "msg": "执行shell指令",
     "usage": ["system <指令>"],
     "module": "system"
   },
   "execute": {
     "name": "execute",
-    "info": "执行Python代码（SU）",
+    "info": "执行eval代码(S)",
     "msg": "使用eval执行Python代码",
     "usage": ["execute <代码>"],
     "module": "execute"
   },
   "notice": {
     "name": "notice",
-    "info": "超级广播（SU）",
+    "info": "超级广播(S)",
     "msg": "对bot所在的所有群进行超级广播",
     "usage": ["notice <内容>"],
     "module": "notice"
   },
   "reboot": {
     "name": "reboot",
-    "info": "重启nontbot（SU）",
+    "info": "重启XDbot(S)",
     "msg": "重启nonebot端",
     "usage": ["reboot"],
     "module": "reboot"

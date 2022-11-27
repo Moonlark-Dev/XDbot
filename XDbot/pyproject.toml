@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "XDbot"
-version = "2.3.3"
+version = "2.3.4"
 description = "Multifunctional QQ robot."
 authors = ["This is XiaoDeng", "XieXiLin"]
 readme = "README.md"
@@ -13,7 +13,7 @@ nonebot2 = "^2.0.0-beta.1"
 nb-cli = "^0.6.0"
 
 [tool.nonebot]
-plugins = []
+plugins = ["nonebot_plugin_guild_patch"]
 plugin_dirs = ["src/plugins"]
 
 [build-system]

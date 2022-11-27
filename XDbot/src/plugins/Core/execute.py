@@ -6,7 +6,7 @@ import nonebot.params
 
 @commands.echo.handle()
 async def echo_handle(args: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
-    await commands.echo.finish(nonebot.adapters.onebot.v11.message.Message(args))
+    await commands.echo.finish(nonebot.adapters.onebot.v11.message.Message(str(args).replace("&#91;", "[").replace("&#93;", "]")))
 
 
 @commands.execute.handle()
