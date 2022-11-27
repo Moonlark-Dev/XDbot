@@ -10,6 +10,12 @@ import time
 import httpx
 
 
+@commands.to_me.handle()
+async def to_me_handle():
+    if random.random() <= 0.25:
+        await commands.to_me.send("？")
+
+
 async def download(url, name):
     """Download file from url and save to name"""
     async with httpx.AsyncClient() as client:
@@ -46,16 +52,33 @@ async def random_save_pictrue(
         event: nonebot.adapters.onebot.v11.event.MessageEvent
     ):
     message = str(event.get_message())
-    if message.find("CQ:image") != -1 and random.random() > 0.75:
+    
+    if message.find("subType=1") == -1:
+        probability = 0.05
+    else:
+        probability = 0.10
+
+
+    if message.find("[CQ:image") != -1\
+            and message[-1] == "]"\
+            and random.random() <= probability:
         logger.info(f"Downloading images in {message}")
         await get_image_cqcode(message)
-        await commands.random_send_pic.send("好图，我的了（")
+        if random.random() <= 0.50:
+            await commands.random_send_pic.send("好图，我的了")
 
 
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
-    if random.random() <= 0.20:
+    if random.random() <= 0.10:
         images = os.listdir("./data/XDbot/reply_images")
+
+        images.sort()
+        if random.random() <= 0.65:
+            images = images[-int(len(images)/2):]
+            if random.random() <= 0.25:
+                images = images[-int(len(images)/2):]
+
         image = random.choice(images)
         image_path = os.path.abspath(f"./data/XDbot/reply_images/{image}")
         await commands.random_send_pic.send(

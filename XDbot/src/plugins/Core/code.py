@@ -32,7 +32,7 @@ async def run_code(code, language, stdin):
                 headers=config.code.header,
                 data=json.dumps(send_json)
             )
-            logger.info("done")
+            # logger.info("done")
         except Exception:
             logger.error(traceback.format_exc())
             return await commands.code.finish(str(traceback.format_exc()))
@@ -61,9 +61,9 @@ async def code_handle(
         stdin = args.split("\n")[0].replace("-i", "").replace(language, "").strip()
     else:
         stdin = ""
-    logger.info(f"code: {code}")
-    logger.info(f"stdin: {stdin}")
-    logger.info(f"language: {language}")
+    logger.info(f"Code: {code}")
+    logger.info(f"Stdin: {stdin}")
+    logger.info(f"Language: {language}")
     try:
         await run_code(code, language, stdin)
     except Exception:

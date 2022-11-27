@@ -36,6 +36,6 @@
   {
     "is_dir": false,
     "path": "./data/XDbot/plugins.json",
-    "default": {"file": false, "text": "{\"disabled\": []}"}
+    "default": {"file": false, "text": "{\"disabled\": [\"reply\"]}"}
   }
 ]

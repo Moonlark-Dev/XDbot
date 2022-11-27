@@ -1,6 +1,8 @@
 import nonebot
 import nonebot.permission
+import nonebot.rule
 
+to_me = nonebot.on_message(rule=nonebot.rule.to_me())
 st = nonebot.on_command("st")
 cave = nonebot.on_command("cave")
 translate = nonebot.on_command("translate", aliases={"fanyi", "tn"})
