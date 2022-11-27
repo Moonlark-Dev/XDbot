@@ -5,7 +5,7 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.3.2"
+version: str = "2.3.3"
 
 
 # Plugin Config
@@ -22,6 +22,14 @@ class code:
         "Authorization": f"Token {token}",
         "Content-Type": "application/json"
     }
+
+
+class guessnum:
+    # Number 请不要修改此项
+    number: dict = {}
+    # 最大值
+    max: int = 100
+
 
 
 class cave:

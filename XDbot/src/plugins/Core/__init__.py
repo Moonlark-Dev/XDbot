@@ -48,7 +48,8 @@ modules = [
     "ping",
     "email",
     "preview",
-    "reply"
+    "reply",
+    "guessnum"
 ]
 plugin_modules = {}
 

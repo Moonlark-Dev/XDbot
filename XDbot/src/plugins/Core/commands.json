@@ -127,16 +127,30 @@
   },
   "execute": {
     "name": "execute",
-    "info": "执行Python代码（S）",
+    "info": "执行Python代码（SU）",
     "msg": "使用eval执行Python代码",
     "usage": ["execute <代码>"],
     "module": "execute"
   },
   "notice": {
     "name": "notice",
-    "info": "超级广播（S）",
+    "info": "超级广播（SU）",
     "msg": "对bot所在的所有群进行超级广播",
     "usage": ["notice <内容>"],
     "module": "notice"
+  },
+  "reboot": {
+    "name": "reboot",
+    "info": "重启nontbot（SU）",
+    "msg": "重启nonebot端",
+    "usage": ["reboot"],
+    "module": "reboot"
+  },
+  "guess": {
+    "name": "guess",
+    "info": "猜数字游戏",
+    "msg": "猜数字游戏",
+    "usage": ["guess start", "guess stop", "guess <数字>", "guess list"],
+    "module": "guessnum"
   }
 }
