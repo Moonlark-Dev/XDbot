@@ -8,10 +8,12 @@ import random
 import asyncio
 
 
-async def autoremove(bot, sleep_time, group):
-    await asyncio.sleep(sleep_time)
+async def autoremove(group):
+    await asyncio.sleep(config.guessnum.max_time)
+    logger.info(f"Stopping the game in {group}")
     if group in list(config.guessnum.number.keys()):
-        await bot.send(f"时间到，游戏结束，正确答案：{config.guessnum.number[group]}")
+        # BUG: 无法正常删除
+        await commands.guessnum.send(f"时间到，游戏结束，正确答案：{config.guessnum.number[group]}")
         config.guessnum.number.pop(group)
 
 
@@ -27,8 +29,8 @@ async def guessnum_handle(
         if group not in config.guessnum.number.keys():
             config.guessnum.number[group] = random.randint(0, config.guessnum.max)
             logger.info(f"Created game in group {group}, answer {config.guessnum.number[group]}")
-            await commands.guessnum.finish(f"【猜数字】：游戏已创建，请在60秒内使用 /guess <number> 作答，取值范围 0 <= <number> <= {config.guessnum.max}")
-            asyncio.create_task(autoremove(commands.guessnum, 60000, config.guessnum.max))
+            asyncio.create_task(autoremove(group))
+            await commands.guessnum.finish(f"【猜数字】：请在 {config.guessnum.max_time}s 内使用 /guess <number> 作答，0 <= <number> <= {config.guessnum.max}")
         else:
             await commands.guessnum.finish("游戏已存在")
     # Ranking
@@ -47,8 +49,8 @@ async def guessnum_handle(
         try:
             guessed = int(argv[0])
             if guessed == config.guessnum.number[group]:
-                await commands.guessnum.finish(f"{guessed}，回答正确！", at_sender = True)
-                config.guessnum.number.pop(group)
+                answer = config.guessnum.number.pop(group)
+                await commands.guessnum.finish(f"{answer}，回答正确！", at_sender = True)
             elif guessed > config.guessnum.number[group]:
                 await commands.guessnum.finish(f"{guessed}，大了", at_sender = True)
             elif guessed < config.guessnum.number[group]:

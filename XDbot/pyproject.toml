@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "XDbot"
-version = "2.3.5"
+version = "2.3.6"
 description = "Multifunctional QQ robot."
 authors = ["This is XiaoDeng", "XieXiLin"]
 readme = "README.md"
