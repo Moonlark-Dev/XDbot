@@ -47,24 +47,32 @@ async def get_image_cqcode(message, start_search = 0):
         return
 
 
+def get_num_of_repetion(string: str, text: str, start: int = 0):
+    size = string.find(text, start)
+    if size == -1:
+        return 0
+    elif len(string) != size + 1:
+        return 1 + get_num_of_repetion(string, text, size + 1)
+    else:
+        return 0
+
 @commands.random_save_pic.handle()
 async def random_save_pictrue(
         event: nonebot.adapters.onebot.v11.event.MessageEvent
     ):
     message = str(event.get_message())
     
-    if message.find("subType=1") == -1:
-        probability = 0.03
+    if message.find("subType=1") != -1 or message.find("type=face") != 0:
+        probability = 0.02
     else:
-        probability = 0.20
+        probability = 0.25
 
-
-    if message.find("[CQ:image") != -1\
+    if get_num_of_repetion(message, "[CQ:image") == 1
             and message[-1] == "]"\
             and random.random() <= probability:
         logger.info(f"Downloading images in {message}")
         await get_image_cqcode(message)
-        await commands.random_send_pic.send("好图，我的了")
+        await commands.random_save_pic.send("好图，我的了")
 
 
 @commands.random_send_pic.handle()

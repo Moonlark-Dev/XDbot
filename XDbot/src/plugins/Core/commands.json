@@ -149,8 +149,8 @@
   "guess": {
     "name": "guess",
     "info": "猜数字游戏",
-    "msg": "猜数字游戏",
-    "usage": ["guess start", "guess stop", "guess <数字>", "guess list"],
+    "msg": "猜数字游戏（您可以使用别名「gn」代替「guess」）",
+    "usage": ["guess start：开始游戏", "guess stop：结束游戏", "guess <数字>：猜测", "guess list：排名（敬请期待）"],
     "module": "guessnum"
   }
 }
