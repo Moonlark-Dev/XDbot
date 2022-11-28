@@ -62,12 +62,12 @@ async def random_save_pictrue(
     ):
     message = str(event.get_message())
     
-    if message.find("subType=1") != -1 or message.find("type=face") != 0:
+    if message.find("subType=1") != -1:
         probability = 0.02
     else:
         probability = 0.25
-
-    if get_num_of_repetion(message, "[CQ:image") == 1
+    # logger.info(get_num_of_repetion(message, "[CQ:image"))
+    if get_num_of_repetion(message, "[CQ:image") == 1\
             and message[-1] == "]"\
             and random.random() <= probability:
         logger.info(f"Downloading images in {message}")
