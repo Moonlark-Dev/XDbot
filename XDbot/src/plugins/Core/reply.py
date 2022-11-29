@@ -14,7 +14,8 @@ import httpx
 async def to_me_handle():
     if random.random() <= 0.25:
         await commands.to_me.send("？")
-
+    elif random.random() <= 0.25:
+        await commands.to_me.send("你干嘛~~~~~~~~~~~~~~~~哎哟~~~~~~~~~")
 
 async def download(url, name):
     """Download file from url and save to name"""
@@ -63,11 +64,12 @@ async def random_save_pictrue(
     message = str(event.get_message())
     
     if message.find("subType=1") != -1:
-        probability = 0.02
-    else:
         probability = 0.25
+    else:
+        probability = 0.02
     # logger.info(get_num_of_repetion(message, "[CQ:image"))
     if get_num_of_repetion(message, "[CQ:image") == 1\
+            and message.find("[CQ:image") == 0\
             and message[-1] == "]"\
             and random.random() <= probability:
         logger.info(f"Downloading images in {message}")
