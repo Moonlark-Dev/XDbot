@@ -64,6 +64,8 @@ for module in modules:
             logger.success(f"Loaded module {module}")
         except Exception as e:
             logger.error(f"Cannot load module {module}: {e}")
+    else:
+        logger.warning(f"Module {module} has been disabled.")
 logger.success(f"Loaded {plugin_modules.keys().__len__()}/{modules.__len__()} plugins.")
 
 # Create help file
@@ -75,6 +77,6 @@ for command in help_json.keys():
     else:
         help_json[command]["enable"] = False
 json.dump(help_json, open("./data/XDbot/help/commands.json", "w", encoding="utf-8"))
-logger.success("Help file inited!")
+logger.success("Help file created.")
 
-logger.info("Done")
+logger.info("Initialization complete!")
