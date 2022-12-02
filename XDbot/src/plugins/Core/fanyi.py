@@ -6,12 +6,14 @@ import nonebot.params
 import requests
 import json
 
+
 @commands.translate.handle()
 async def translate_handle(
     message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
     keyword = message.extract_plain_text()
-    req = requests.get(f"https://api.muxiaoguo.cn/api/Tn_tencent?api_key={config.translate.api_key}&text={keyword}")
+    req = requests.get(
+        f"https://api.muxiaoguo.cn/api/Tn_tencent?api_key={config.translate.api_key}&text={keyword}")
     data = json.loads(req.text)
     answer = ""
 
@@ -26,4 +28,3 @@ async def translate_handle(
         answer += f"失败（{data['code']}）：{data['msg']}"
 
     await commands.translate.finish(answer)
-

@@ -33,7 +33,6 @@ class guessnum:
     max_time: float = 60.0
 
 
-
 class cave:
     # 冷却时间，0为无限制
     sleep: int = 0
@@ -49,8 +48,8 @@ class cave:
     table: str = "cave"
     # MySQL语句设置
     get_all_id: str = f"SELECT ID FROM {table} WHERE (MSG != '{removed}')"
-    get_cave: str = f"SELECT * FROM {table} WHERE (ID = %ID%)" 
-    
+    get_cave: str = f"SELECT * FROM {table} WHERE (ID = %ID%)"
+
 
 class cave_reply:
     # MySQL 数据库设置
@@ -59,7 +58,6 @@ class cave_reply:
     password: str = cave.password
     database: str = cave.database
     table: str = cave.table + "_reply"
-
 
 
 class email:
@@ -91,6 +89,7 @@ class command_help:
     command_start: str = "/"
     # 指令列表追加内容
     list_backhander: str = f"使用 {command_start}help <command> 获取更多信息"
+
 
 class preview:
     # 测试playwright是否可用

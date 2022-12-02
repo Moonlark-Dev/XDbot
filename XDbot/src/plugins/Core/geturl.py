@@ -1,7 +1,7 @@
 from nonebot.log import logger
 from . import __commands__ as commands
 import nonebot.adapters.onebot.v11
-import nonebot.params 
+import nonebot.params
 import httpx
 import time
 
@@ -11,8 +11,8 @@ async def get(url):
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         return response.status_code
-    
-        
+
+
 @commands.geturl.handle()
 async def geturl_handle(message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()):
     url = str(message)
@@ -29,5 +29,3 @@ URL: {url}
 耗时：{end_time - start_time}s
 """
     await commands.geturl.finish(answer)
-	
-	

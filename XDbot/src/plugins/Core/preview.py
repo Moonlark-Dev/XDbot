@@ -38,4 +38,3 @@ async def preview_handle(
 
 if config.preview.test_playwright:
     asyncio.run(test_playwright_available())
-

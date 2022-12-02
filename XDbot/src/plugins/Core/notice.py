@@ -3,6 +3,7 @@ import nonebot.adapters.onebot.v11.bot
 import nonebot.adapters.onebot.v11
 import nonebot.params
 
+
 @commands.notice.handle()
 async def notice_handle(
     bot: nonebot.adapters.onebot.v11.bot.Bot,

@@ -1,46 +1,46 @@
 [
-  {
-    "is_dir": true,
-    "path": "./data"
-  },
-  {
-    "is_dir": true,
-    "path": "./data/XDbot"
-  },
-  {
-    "is_dir": true,
-    "path": "./data/XDbot/help"
-  },
-  {
-    "is_dir": false,
-    "path": "./data/XDbot/help/commands.json",
-    "default": {"file": true, "path": "${PluginDir}/commands.json"}
-  },
-  {
-    "is_dir": true,
-    "path": "./data/XDbot/messenger"
-  },
-  {
-    "is_dir": true,
-    "path": "./data/XDbot/cave_images"
-  },
-  {
-    "is_dir": true,
-    "path": "./data/XDbot/reply_images"
-  },
-  {
-    "is_dir": false,
-    "path": "./data/XDbot/messenger/messenger.json",
-    "default": {"file": false, "text": "[]"}
-  },
-  {
-    "is_dir": false,
-    "path": "./data/XDbot/plugins.json",
-    "default": {"file": false, "text": "{\"disabled\": [\"reply\"]}"}
-  },
-  {
-    "is_dir": false,
-    "path": "./data/XDbot/guessnum.json",
-    "default": {"file": false, "text": "[]"}
-  }
+    {
+        "is_dir": true,
+        "path": "./data"
+    },
+    {
+        "is_dir": true,
+        "path": "./data/XDbot"
+    },
+    {
+        "is_dir": true,
+        "path": "./data/XDbot/help"
+    },
+    {
+        "is_dir": false,
+        "path": "./data/XDbot/help/commands.json",
+        "default": {"file": true, "path": "${PluginDir}/commands.json"}
+    },
+    {
+        "is_dir": true,
+        "path": "./data/XDbot/messenger"
+    },
+    {
+        "is_dir": true,
+        "path": "./data/XDbot/cave_images"
+    },
+    {
+        "is_dir": true,
+        "path": "./data/XDbot/reply_images"
+    },
+    {
+        "is_dir": false,
+        "path": "./data/XDbot/messenger/messenger.json",
+        "default": {"file": false, "text": "[]"}
+    },
+    {
+        "is_dir": false,
+        "path": "./data/XDbot/plugins.json",
+        "default": {"file": false, "text": "{\"disabled\": [\"reply\"]}"}
+    },
+    {
+        "is_dir": false,
+        "path": "./data/XDbot/guessnum.json",
+        "default": {"file": false, "text": "[]"}
+    }
 ]

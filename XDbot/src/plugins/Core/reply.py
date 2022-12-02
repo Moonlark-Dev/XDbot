@@ -17,6 +17,7 @@ async def to_me_handle():
     elif random.random() <= 0.25:
         await commands.to_me.send("你干嘛~~~~~~~~~~~~~~~~哎哟~~~~~~~~~")
 
+
 async def download(url, name):
     """Download file from url and save to name"""
     async with httpx.AsyncClient() as client:
@@ -38,7 +39,7 @@ async def get_image_url(cqcode):
         logger.warning(f"Cannot download {cqcode[url_start:url_end]}: {e}")
 
 
-async def get_image_cqcode(message, start_search = 0):
+async def get_image_cqcode(message, start_search=0):
     cqcode_start = message.find("CQ:image", start_search)
     if cqcode_start != -1:
         cqcode_end = message.find("]", cqcode_start)
@@ -57,12 +58,13 @@ def get_num_of_repetion(string: str, text: str, start: int = 0):
     else:
         return 0
 
+
 @commands.random_save_pic.handle()
 async def random_save_pictrue(
-        event: nonebot.adapters.onebot.v11.event.MessageEvent
-    ):
+    event: nonebot.adapters.onebot.v11.event.MessageEvent
+):
     message = str(event.get_message())
-    
+
     if message.find("subType=1") != -1:
         probability = 0.25
     else:

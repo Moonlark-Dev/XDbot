@@ -30,11 +30,14 @@ Subject: {email_subject}
 
 ----------------------
 发件人：{event.sender.card}({event.get_user_id()})""".encode("utf-8")
-            logger.info(f"Sending {sending_message} to {to_addrs} (use {config.email.smtp_user})")
+            logger.info(
+                f"Sending {sending_message} to {to_addrs} (use {config.email.smtp_user})")
             # 发送邮件
             try:
-                smtp = smtplib.SMTP(config.email.smtp_server, config.email.smtp_server_port)
-                smtp.connect(config.email.smtp_server_host, config.email.smtp_server_port)
+                smtp = smtplib.SMTP(config.email.smtp_server,
+                                    config.email.smtp_server_port)
+                smtp.connect(config.email.smtp_server_host,
+                             config.email.smtp_server_port)
                 smtp.login(config.email.smtp_user, config.email.smtp_passwd)
                 smtp.auth_login()
                 smtp.sendmail(
@@ -51,4 +54,3 @@ Subject: {email_subject}
             await commands.send_email.finish("邮件已发送", at_sender=True)
         else:
             await commands.send_email.finish("冷却中！", at_sender=True)
-

@@ -6,7 +6,6 @@ import os
 import asyncio
 
 
-
 @commands.system.handle()
 async def system_handle(args: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
     command = args.extract_plain_text()

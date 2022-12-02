@@ -5,11 +5,11 @@ import pymysql
 
 def connect_database():
     return pymysql.connect(
-            host=config.cave.host,
-            user=config.cave.user,
-            password=config.cave.password,
-            database=config.cave.database
-        )
+        host=config.cave.host,
+        user=config.cave.user,
+        password=config.cave.password,
+        database=config.cave.database
+    )
 
 
 @commands.cave.handle()

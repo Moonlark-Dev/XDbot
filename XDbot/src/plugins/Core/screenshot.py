@@ -10,7 +10,6 @@ import os
 # Init
 logger.info("Trying to take screenshots . . .")
 pyautogui.screenshot("./data/XDbot/screenshot.png")
-    
 
 
 @commands.screenshot.handle()

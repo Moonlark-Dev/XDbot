@@ -17,4 +17,3 @@ class guessnum:
     max: int = 250
     # 限时，单位秒
     max_time: float = 60.0
-

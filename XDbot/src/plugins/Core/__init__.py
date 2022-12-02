@@ -39,7 +39,7 @@ modules = [
     "geturl",
     "notice",
     "code",
-#   "whoat",
+    #   "whoat",
     "st",
     "screenshot",
     "jrrp",
@@ -66,17 +66,20 @@ for module in modules:
             logger.error(f"Cannot load module {module}: {e}")
     else:
         logger.warning(f"Module {module} has been disabled.")
-logger.success(f"Loaded {plugin_modules.keys().__len__()}/{modules.__len__()} plugins.")
+logger.success(
+    f"Loaded {plugin_modules.keys().__len__()}/{modules.__len__()} plugins.")
 
 # Create help file
-help_json = json.load(open(os.path.join(path, "commands.json"), encoding="utf-8"))
+help_json = json.load(
+    open(os.path.join(path, "commands.json"), encoding="utf-8"))
 loaded_plugins = plugin_modules.keys()
 for command in help_json.keys():
     if help_json[command]["module"] in loaded_plugins:
         help_json[command]["enable"] = True
     else:
         help_json[command]["enable"] = False
-json.dump(help_json, open("./data/XDbot/help/commands.json", "w", encoding="utf-8"))
+json.dump(help_json, open(
+    "./data/XDbot/help/commands.json", "w", encoding="utf-8"))
 logger.success("Help file created.")
 
 logger.info("Initialization complete!")

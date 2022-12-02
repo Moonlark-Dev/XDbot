@@ -43,12 +43,11 @@ async def run_code(code, language, stdin):
             return await commands.code.finish(data["stdout"])
         else:
             return await commands.code.finish(f'ERROR: {data["error"]}\n{data["stderr"]}')
-        
 
 
 @commands.code.handle()
 async def code_handle(
-    message: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
+        message: nonebot.adapters.onebot.v11.message.Message = nonebot.params.CommandArg()):
     """
     Handle code
     """
@@ -58,7 +57,8 @@ async def code_handle(
     code = args[args.find("\n")+1:]
     language = args.split("\n")[0].split(" ")[0]
     if args.split("\n")[0].find("-i") != -1:
-        stdin = args.split("\n")[0].replace("-i", "").replace(language, "").strip()
+        stdin = args.split("\n")[0].replace(
+            "-i", "").replace(language, "").strip()
     else:
         stdin = ""
     logger.info(f"Code: {code}")
