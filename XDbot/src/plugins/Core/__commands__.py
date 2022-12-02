@@ -2,7 +2,6 @@ import nonebot
 import nonebot.permission
 import nonebot.rule
 
-guessnum = nonebot.on_command("guess", aliases = {"gn"})
 to_me = nonebot.on_message(rule=nonebot.rule.to_me())
 st = nonebot.on_command("st")
 cave = nonebot.on_command("cave")

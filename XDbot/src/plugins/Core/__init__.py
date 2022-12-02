@@ -51,7 +51,7 @@ modules = [
     "email",
     "preview",
     "reply",
-    "guessnum"
+    "entertainment"
 ]
 plugin_modules = {}
 

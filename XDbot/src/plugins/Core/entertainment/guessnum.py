@@ -17,14 +17,11 @@ async def autoremove(group):
         config.guessnum.number.pop(group)
 
 
-"""
-@commands.guessnum_onmessage.handle()
+@commands.guessnum_onmsg.handle()
 async def guessnum_onmessage_handle(
-        event: nonebot.adapters.onebot.v11.event.MessageEvent,
-        message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
+        event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
     ):
-    logger.warning("Running")
-    argv = message.extract_plain_text()
+    argv = event.get_plaintext()
     group = event.get_session_id().split("_")[1]
     if group in list(config.guessnum.number.keys()):
         # Guess number
@@ -39,7 +36,7 @@ async def guessnum_onmessage_handle(
                 await commands.guessnum.finish(f"{guessed}，小了", at_sender = True)
         except Exception as e:
             logger.error(e)
-"""
+
 
 @commands.guessnum.handle()
 async def guessnum_handle(
@@ -80,5 +77,12 @@ async def guessnum_handle(
             elif guessed < config.guessnum.number[group]:
                 await commands.guessnum.finish(f"{guessed}，小了", at_sender = True)
         except KeyError:
-            await commands.guessnum.finish("游戏未开始或已结束，使用 /guess start 创建游戏", at_sender = True)
+            await commands.guessnum.finish(f"游戏未开始或已结束，使用 {config.__config__.command_help.command_start}guess start 创建游戏", at_sender = True)
+        except ValueError:
+            await commands.guessnum.finish(f"""未知参数：{argv[0]}
+/guess start （开始游戏）
+/guess stop （结束游戏）
+/guess <number: int> （作答）
+/guess list（排行榜：敬请期待）
+在游戏进行中：<number: int>（作答）""".replace("/",config.__config__.command_help.command_start))
 
