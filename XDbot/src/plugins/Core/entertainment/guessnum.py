@@ -1,6 +1,8 @@
 from . import __commands__ as commands
 from . import __config__ as config
+from . import __mysql__
 from nonebot.log import logger
+import traceback
 import nonebot.adapters.onebot.v11
 import nonebot.adapters.onebot.v11.event
 import nonebot.params
@@ -12,7 +14,6 @@ async def autoremove(group):
     await asyncio.sleep(config.guessnum.max_time)
     logger.info(f"Stopping the game in {group}")
     if group in list(config.guessnum.number.keys()):
-        # BUG: 无法正常删除
         await commands.guessnum.send(f"时间到，游戏结束，正确答案：{config.guessnum.number[group]}")
         config.guessnum.number.pop(group)
 
@@ -28,14 +29,20 @@ async def guessnum_onmessage_handle(
         try:
             guessed = int(argv)
             if guessed == config.guessnum.number[group]:
+                # Add coin
+                coin = __mysql__.add_coin_for_user(int(event.get_user_id()), random.randint(0, 5))[1]
+                __mysql__.add_exp_for_user(int(event.get_user_id()), 2)
+
+                # Finish
                 answer = config.guessnum.number.pop(group)
-                await commands.guessnum.finish(f"{answer}，回答正确！", at_sender=True)
+                await commands.guessnum_onmsg.send(f"{answer}，回答正确！", at_sender=True)
+                await commands.guessnum_onmsg.finish(f"你获得了 {coin}.00 {config.currency_symbol}", at_sender=True)
             elif guessed > config.guessnum.number[group]:
-                await commands.guessnum.finish(f"{guessed}，大了", at_sender=True)
+                await commands.guessnum_onmsg.finish(f"{guessed}，大了", at_sender=True)
             elif guessed < config.guessnum.number[group]:
-                await commands.guessnum.finish(f"{guessed}，小了", at_sender=True)
-        except Exception as e:
-            logger.error(e)
+                await commands.guessnum_onmsg.finish(f"{guessed}，小了", at_sender=True)
+        except Exception:
+            logger.error(traceback.format_exc())
 
 
 @commands.guessnum.handle()
@@ -72,6 +79,12 @@ async def guessnum_handle(
         try:
             guessed = int(argv[0])
             if guessed == config.guessnum.number[group]:
+                # Add coin
+                qq = int(event.get_user_id())
+                coin = __mysql__.get_user_data(qq, 3) + random.randint(0, 5)
+                __mysql__.set_user_data(qq, "coin", coin)
+                logger.info(f"{qq} now has {coin} {config.currency_symbol}")
+                # Finish
                 answer = config.guessnum.number.pop(group)
                 await commands.guessnum.finish(f"{answer}，回答正确！", at_sender=True)
             elif guessed > config.guessnum.number[group]:
