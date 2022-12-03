@@ -8,6 +8,8 @@ version: str = __config__.version
 # 货币符号
 # 默认的别问，问就是随机出来的（
 currency_symbol: str = "VI"
+# 货币名称
+currency_name: str = "VimCoin"
 
 
 # MYSQL
@@ -29,3 +31,5 @@ class guessnum:
     max: int = 250
     # 限时，单位秒
     max_time: float = 60.0
+    # 最后一次触发
+    latest_create: dict = {}

@@ -8,6 +8,7 @@ import nonebot.adapters.onebot.v11.event
 import nonebot.params
 import random
 import asyncio
+import time
 
 
 async def autoremove(group):
@@ -30,9 +31,8 @@ async def guessnum_onmessage_handle(
             guessed = int(argv)
             if guessed == config.guessnum.number[group]:
                 # Add coin
-                coin = __mysql__.add_coin_for_user(int(event.get_user_id()), random.randint(0, 5))[1]
+                coin = __mysql__.add_coin_for_user(int(event.get_user_id()), random.randint(0, 10))[1]
                 __mysql__.add_exp_for_user(int(event.get_user_id()), 2)
-
                 # Finish
                 answer = config.guessnum.number.pop(group)
                 await commands.guessnum_onmsg.send(f"{answer}，回答正确！", at_sender=True)
@@ -55,12 +55,19 @@ async def guessnum_handle(
     # Start Game
     if argv[0] == "start":
         if group not in config.guessnum.number.keys():
+            if group in config.guessnum.latest_create.keys():
+                if time.time() - config.guessnum.latest_create[group] <= config.guessnum.max_time:
+                    return await commands.guessnum.finish(f"冷却中，请稍候！")
+            if __mysql__.get_user_data(int(event.get_user_id()), 3) >= 1:
+                __mysql__.add_coin_for_user(int(event.get_user_id()), -1)
+            else:
+                return await commands.guessnum.finish(f"{config.currency_name} 不足") 
             config.guessnum.number[group] = random.randint(
                 0, config.guessnum.max)
             logger.info(
                 f"Created game in group {group}, answer {config.guessnum.number[group]}")
             asyncio.create_task(autoremove(group))
-            await commands.guessnum.finish(f"【猜数字】：请在 {config.guessnum.max_time}s 内使用 /guess <number> 作答，0 <= <number> <= {config.guessnum.max}")
+            await commands.guessnum.finish(f"【猜数字】：请在 {config.guessnum.max_time}s 内作答（0 <= <number> <= {config.guessnum.max}）")
         else:
             await commands.guessnum.finish("游戏已存在")
     # Ranking
