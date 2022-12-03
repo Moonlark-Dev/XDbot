@@ -5,7 +5,7 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.3.8"
+version: str = "2.4.0"
 
 
 # Plugin Config
