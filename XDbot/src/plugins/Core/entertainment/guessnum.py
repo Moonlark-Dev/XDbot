@@ -33,11 +33,15 @@ async def guessnum_onmessage_handle(
                 # Add coin
                 coin = __mysql__.add_coin_for_user(
                     int(event.get_user_id()), random.randint(0, 10))[1]
-                __mysql__.add_exp_for_user(int(event.get_user_id()), 2)
+                level_update_data = __mysql__.add_exp_for_user(
+                    int(event.get_user_id()), 2)
+
+                if level_update_data[0]:
+                    await commands.guessnum.send(f"【等级提升】{level_update_data[2] - 1} -> {level_update_data[2]}", at_sender=True)
+
                 # Finish
                 answer = config.guessnum.number.pop(group)
-                await commands.guessnum_onmsg.send(f"{answer}，回答正确！", at_sender=True)
-                await commands.guessnum_onmsg.finish(f"你获得了 {coin}.00 {config.currency_symbol}", at_sender=True)
+                await commands.guessnum_onmsg.finish(f"{answer}，回答正确！\n你获得了 {coin} {config.currency_symbol}", at_sender=True)
             elif guessed > config.guessnum.number[group]:
                 await commands.guessnum_onmsg.finish(f"{guessed}，大了", at_sender=True)
             elif guessed < config.guessnum.number[group]:
@@ -59,6 +63,7 @@ async def guessnum_handle(
             if group in config.guessnum.latest_create.keys():
                 if time.time() - config.guessnum.latest_create[group] <= config.guessnum.max_time:
                     return await commands.guessnum.finish(f"冷却中，请稍候！")
+            config.guessnum.latest_create[group] = time.time()
             if __mysql__.get_user_data(int(event.get_user_id()), 3) >= 1:
                 __mysql__.add_coin_for_user(int(event.get_user_id()), -1)
             else:
@@ -75,13 +80,13 @@ async def guessnum_handle(
     elif argv[0] == "list":
         await commands.guessnum.finish("敬请期待")
     # Stop Game
-    elif argv[0] == "stop":
-        try:
-            answer = config.guessnum.number.pop(group)
-        except KeyError:
-            await commands.guessnum.finish("找不到游戏", at_sender=True)
-        else:
-            await commands.guessnum.finish(f"游戏结束，正确答案：{answer}")
+    # elif argv[0] == "stop":
+    #    try:
+    #        answer = config.guessnum.number.pop(group)
+    #    except KeyError:
+    #        await commands.guessnum.finish("找不到游戏", at_sender=True)
+    #    else:
+    #        await commands.guessnum.finish(f"游戏结束，正确答案：{answer}")
     else:
         # Guess number
         try:
@@ -104,7 +109,6 @@ async def guessnum_handle(
         except ValueError:
             await commands.guessnum.finish(f"""未知参数：{argv[0]}
 /guess start （开始游戏）
-/guess stop （结束游戏）
 /guess <number: int> （作答）
 /guess list（排行榜：敬请期待）
 在游戏进行中：<number: int>（作答）""".replace("/", config.__config__.command_help.command_start))

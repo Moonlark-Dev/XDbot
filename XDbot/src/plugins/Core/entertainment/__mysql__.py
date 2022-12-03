@@ -33,6 +33,7 @@ def get_user_data(id, item):
         database.commit()
         database.close()
         return get_user_data(id, item)
+
     except Exception as e:
         database.close()
         logger.error(str(e))
