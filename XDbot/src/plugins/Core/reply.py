@@ -1,4 +1,5 @@
 from . import __commands__ as commands
+from . import __config__ as config
 from nonebot.log import logger
 import nonebot.adapters.onebot.v11.message
 import nonebot.adapters.onebot.v11
@@ -81,7 +82,7 @@ async def random_save_pictrue(
 
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
-    if random.random() <= 0.10:
+    if random.random() <= 0.10 and time.time() - config.reply.latest_send >= config.reply.send_sleep:
         images = os.listdir("./data/XDbot/reply_images")
 
         images.sort()

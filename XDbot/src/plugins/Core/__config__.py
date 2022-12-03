@@ -51,6 +51,13 @@ class cave:
     get_cave: str = f"SELECT * FROM {table} WHERE (ID = %ID%)"
 
 
+class reply:
+    # 发图冷却时间
+    send_sleep: int = 10
+    # 上次发图时间
+    latest_send: int = time.time()
+
+
 class cave_reply:
     # MySQL 数据库设置
     host: str = cave.host
