@@ -52,8 +52,10 @@ def set_user_data(id, item, value):
 def add_coin_for_user(id, number):
     coin = get_user_data(id, 3) + number
     set_user_data(id, "coin", coin)
-    logger.info(f"User {id} now has {coin}(+{number}) {config.currency_symbol}")
+    logger.info(
+        f"User {id} now has {coin}(+{number}) {config.currency_symbol}")
     return id, number, coin
+
 
 def add_exp_for_user(id, number):
     exp = get_user_data(id, 2) + number

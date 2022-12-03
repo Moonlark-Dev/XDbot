@@ -1,156 +1,156 @@
 {
-    "help": {
-        "name": "help",
-        "info": "获取帮助",
-        "msg": "查看指令列表，或者获取单个指令的帮助信息",
-        "usage": ["help", "help <指令>"],
-        "module": "help"
-    },
-    "jrrp": {
-        "name": "jrrp",
-        "info": "今日人品",
-        "msg": "查询今日人品",
-        "usage": ["jrrp"],
-        "module": "jrrp"
-    },
-    "status": {
-        "name": "status",
-        "info": "系统状态",
-        "msg": "查看系统状态",
-        "usage": ["status"],
-        "module": "status"
-    },
-    "translate": {
-        "name": "translate",
-        "info": "快速翻译",
-        "msg": "快速调用腾讯翻译API",
-        "usage": ["translate <待翻译文本>", "tn <待翻译文本>", "fanyi <待翻译文本>"],
-        "module": "fanyi"
-    },
-    "code": {
-        "name": "code",
-        "info": "运行代码",
-        "msg": "运行代码",
-        "usage": ["code <语言>\n<代码>", "code <语言> -i <标准输入>\n<代码>"],
-        "module": "code"
-    },
-    "get": {
-        "name": "get",
-        "info": "发送请求",
-        "msg": "发送一个HTTP(S)请求到指定URL",
-        "usage": ["get <URL>"],
-        "module": "geturl"
-    },
-    "ping": {
-        "name": "ping",
-        "info": "PING指定主机",
-        "msg": "PING指定主机并返回统计信息",
-        "usage": ["ping <主机>"],
-        "module": "ping"
-    },
-    "ping-f": {
-        "name": "ping-f",
-        "info": "PING主机（详细信息）",
-        "msg": "PING指定主机并显示所有日志",
-        "usage": ["ping-f <主机>"],
-        "module": "ping"
-    },
-    "about": {
-        "name": "about",
-        "info": "关于 XDbot",
-        "msg": "关于 XDbot",
-        "usage": ["about"],
-        "module": "about"
-    },
-    "screenshot": {
-        "name": "screenshot",
-        "info": "截图",
-        "msg": "屏幕截图",
-        "usage": ["screenshot"],
-        "module": "screenshot"
-    },
-    "preview": {
-        "name": "preview",
-        "info": "预览网页",
-        "msg": "预览网页",
-        "usage": ["preview <URL>"],
-        "module": "preview"
-    },
-    "messenger": {
-        "name": "messenger",
-        "info": "信使",
-        "msg": "信使，让bot带话",
-        "usage": ["messenger <收信人>\n<内容>"],
-        "module": "messenger"
-    },
-    "send-email": {
-        "name": "send-email",
-        "info": "发送邮件",
-        "msg": "发送邮件",
-        "usage": ["send-email <收件人(用空格分割)>\n<主题>\n<正文>"],
-        "module": "email"
-    },
-    "ct": {
-        "name": "ct",
-        "info": "单群发言排名",
-        "msg": "查询单群发言排名",
-        "usage": ["ct"],
-        "module": "ct"
-    },
-    "ctg": {
-        "name": "ctg",
-        "info": "全局发言排名",
-        "msg": "查询全局发言排名",
-        "usage": ["ctg"],
-        "module": "ct"
-    },
-    "mct": {
-        "name": "mct",
-        "info": "单群发言数据",
-        "msg": "查询单群发言数据",
-        "usage": ["mct", "mct <QQ号>", "mct <@QQ>"],
-        "module": "ct"
-    },
-    "mctg": {
-        "name": "mctg",
-        "info": "全局发言数据",
-        "msg": "查询全局发言数据",
-        "usage": ["mctg", "mctg <QQ号>", "mctg <@QQ>"],
-        "module": "mctg"
-    },
-    "system": {
-        "name": "ststem",
-        "info": "执行shell(S)",
-        "msg": "执行shell指令",
-        "usage": ["system <指令>"],
-        "module": "system"
-    },
-    "execute": {
-        "name": "execute",
-        "info": "执行eval代码(S)",
-        "msg": "使用eval执行Python代码",
-        "usage": ["execute <代码>"],
-        "module": "execute"
-    },
-    "notice": {
-        "name": "notice",
-        "info": "超级广播(S)",
-        "msg": "对bot所在的所有群进行超级广播",
-        "usage": ["notice <内容>"],
-        "module": "notice"
-    },
-    "reboot": {
-        "name": "reboot",
-        "info": "重启XDbot(S)",
-        "msg": "重启nonebot端",
-        "usage": ["reboot"],
-        "module": "reboot"
-    },
-    "guess": {
-        "name": "guess",
-        "info": "猜数字游戏",
-        "msg": "猜数字游戏（您可以使用别名「gn」代替「guess」）",
-        "usage": ["guess start：开始游戏", "guess stop：结束游戏", "guess <数字>：猜测", "guess list：排名（敬请期待）"],
-        "module": "guessnum"
-    }
+  "help": {
+    "name": "help",
+    "info": "获取帮助",
+    "msg": "查看指令列表，或者获取单个指令的帮助信息",
+    "usage": ["help", "help <指令>"],
+    "module": "help"
+  },
+  "jrrp": {
+    "name": "jrrp",
+    "info": "今日人品",
+    "msg": "查询今日人品",
+    "usage": ["jrrp"],
+    "module": "jrrp"
+  },
+  "status": {
+    "name": "status",
+    "info": "系统状态",
+    "msg": "查看系统状态",
+    "usage": ["status"],
+    "module": "status"
+  },
+  "translate": {
+    "name": "translate",
+    "info": "快速翻译",
+    "msg": "快速调用腾讯翻译API",
+    "usage": ["translate <待翻译文本>", "tn <待翻译文本>", "fanyi <待翻译文本>"],
+    "module": "fanyi"
+  },
+  "code": {
+    "name": "code",
+    "info": "运行代码",
+    "msg": "运行代码",
+    "usage": ["code <语言>\n<代码>", "code <语言> -i <标准输入>\n<代码>"],
+    "module": "code"
+  },
+  "get": {
+    "name": "get",
+    "info": "发送请求",
+    "msg": "发送一个HTTP(S)请求到指定URL",
+    "usage": ["get <URL>"],
+    "module": "geturl"
+  },
+  "ping": {
+    "name": "ping",
+    "info": "PING指定主机",
+    "msg": "PING指定主机并返回统计信息",
+    "usage": ["ping <主机>"],
+    "module": "ping"
+  },
+  "ping-f": {
+    "name": "ping-f",
+    "info": "PING主机（详细信息）",
+    "msg": "PING指定主机并显示所有日志",
+    "usage": ["ping-f <主机>"],
+    "module": "ping"
+  },
+  "about": {
+    "name": "about",
+    "info": "关于 XDbot",
+    "msg": "关于 XDbot",
+    "usage": ["about"],
+    "module": "about"
+  },
+  "screenshot": {
+    "name": "screenshot",
+    "info": "截图",
+    "msg": "屏幕截图",
+    "usage": ["screenshot"],
+    "module": "screenshot"
+  },
+  "preview": {
+    "name": "preview",
+    "info": "预览网页",
+    "msg": "预览网页",
+    "usage": ["preview <URL>"],
+    "module": "preview"
+  },
+  "messenger": {
+    "name": "messenger",
+    "info": "信使",
+    "msg": "信使，让bot带话",
+    "usage": ["messenger <收信人>\n<内容>"],
+    "module": "messenger"
+  },
+  "send-email": {
+    "name": "send-email",
+    "info": "发送邮件",
+    "msg": "发送邮件",
+    "usage": ["send-email <收件人(用空格分割)>\n<主题>\n<正文>"],
+    "module": "email"
+  },
+  "ct": {
+    "name": "ct",
+    "info": "单群发言排名",
+    "msg": "查询单群发言排名",
+    "usage": ["ct"],
+    "module": "ct"
+  },
+  "ctg": {
+    "name": "ctg",
+    "info": "全局发言排名",
+    "msg": "查询全局发言排名",
+    "usage": ["ctg"],
+    "module": "ct"
+  },
+  "mct": {
+    "name": "mct",
+    "info": "单群发言数据",
+    "msg": "查询单群发言数据",
+    "usage": ["mct", "mct <QQ号>", "mct <@QQ>"],
+    "module": "ct"
+  },
+  "mctg": {
+    "name": "mctg",
+    "info": "全局发言数据",
+    "msg": "查询全局发言数据",
+    "usage": ["mctg", "mctg <QQ号>", "mctg <@QQ>"],
+    "module": "mctg"
+  },
+  "system": {
+    "name": "ststem",
+    "info": "执行shell(S)",
+    "msg": "执行shell指令",
+    "usage": ["system <指令>"],
+    "module": "system"
+  },
+  "execute": {
+    "name": "execute",
+    "info": "执行eval代码(S)",
+    "msg": "使用eval执行Python代码",
+    "usage": ["execute <代码>"],
+    "module": "execute"
+  },
+  "notice": {
+    "name": "notice",
+    "info": "超级广播(S)",
+    "msg": "对bot所在的所有群进行超级广播",
+    "usage": ["notice <内容>"],
+    "module": "notice"
+  },
+  "reboot": {
+    "name": "reboot",
+    "info": "重启XDbot(S)",
+    "msg": "重启nonebot端",
+    "usage": ["reboot"],
+    "module": "reboot"
+  },
+  "guess": {
+    "name": "guess",
+    "info": "猜数字游戏",
+    "msg": "猜数字游戏（您可以使用别名「gn」代替「guess」）",
+    "usage": ["guess start：开始游戏", "guess stop：结束游戏", "guess <数字>：猜测", "guess list：排名（敬请期待）"],
+    "module": "guessnum"
+  }
 }

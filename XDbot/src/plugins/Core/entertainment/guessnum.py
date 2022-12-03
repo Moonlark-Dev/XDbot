@@ -31,7 +31,8 @@ async def guessnum_onmessage_handle(
             guessed = int(argv)
             if guessed == config.guessnum.number[group]:
                 # Add coin
-                coin = __mysql__.add_coin_for_user(int(event.get_user_id()), random.randint(0, 10))[1]
+                coin = __mysql__.add_coin_for_user(
+                    int(event.get_user_id()), random.randint(0, 10))[1]
                 __mysql__.add_exp_for_user(int(event.get_user_id()), 2)
                 # Finish
                 answer = config.guessnum.number.pop(group)
@@ -61,7 +62,7 @@ async def guessnum_handle(
             if __mysql__.get_user_data(int(event.get_user_id()), 3) >= 1:
                 __mysql__.add_coin_for_user(int(event.get_user_id()), -1)
             else:
-                return await commands.guessnum.finish(f"{config.currency_name} 不足") 
+                return await commands.guessnum.finish(f"{config.currency_name} 不足")
             config.guessnum.number[group] = random.randint(
                 0, config.guessnum.max)
             logger.info(

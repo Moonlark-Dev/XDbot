@@ -7,7 +7,7 @@ bot_nickname: str = __config__.bot_nickname
 version: str = __config__.version
 # 货币符号
 # 默认的别问，问就是随机出来的（
-currency_symbol: str = "VI"
+currency_symbol: str = "vi"
 # 货币名称
 currency_name: str = "VimCoin"
 
