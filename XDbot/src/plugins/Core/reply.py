@@ -83,6 +83,7 @@ async def random_save_pictrue(
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
     if random.random() <= 0.10 and time.time() - config.reply.latest_send >= config.reply.send_sleep:
+        config.reply.latest_send = time.time()
         images = os.listdir("./data/XDbot/reply_images")
 
         images.sort()
