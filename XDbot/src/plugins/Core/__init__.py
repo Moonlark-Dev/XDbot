@@ -52,7 +52,7 @@ modules = [
     "email",
     "preview",
     "reply",
-    "entertainment"
+    "entertainment",
 ]
 plugin_modules = {}
 
