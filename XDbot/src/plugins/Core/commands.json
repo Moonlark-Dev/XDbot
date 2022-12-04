@@ -58,7 +58,7 @@
   "screenshot": {
     "name": "screenshot",
     "info": "截图",
-    "msg": "屏幕截图",
+    "msg": "屏幕截图(S)",
     "usage": ["screenshot"],
     "module": "screenshot"
   },
@@ -139,25 +139,15 @@
     "usage": ["reboot"],
     "module": "reboot"
   },
-  "guess": {
-    "name": "guess",
-    "info": "猜数字游戏",
-    "msg": "猜数字游戏（您可以使用别名「gn」代替「guess」）",
-    "usage": ["guess start：开始游戏", "guess stop：结束游戏", "guess <数字>：猜测", "guess list：排名（敬请期待）"],
-    "module": "entertainment"
-  },
-  "sign": {
-    "name": "sign",
-    "info": "签到",
-    "msg": "每日签到",
-    "usage": ["sign", "签到"],
-    "module": "entertainment"
-  },
-  "user-status": {
-    "name": "user-status",
-    "info": "获取用户信息",
-    "msg": "获取用户信息",
-    "usage": ["user-status"],
+  "et": {
+    "name": "et",
+    "info": "娱乐模块帮助",
+    "msg": "娱乐模块指令帮助",
+    "usage": [
+      "guess：猜数字游戏",
+      "sign：每日签到",
+      "user-info：获取用户信息"
+    ],
     "module": "entertainment"
   }
 }
