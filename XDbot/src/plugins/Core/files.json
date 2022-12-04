@@ -56,10 +56,10 @@
   },
   {
     "is_dir": false,
-    "path": "./data/XDbot/signed.json",
+    "path": "./data/XDbot/sign_data.json",
     "default": {
       "file": false,
-      "text": "[]"
+      "text": "{}"
     }
   }
 ]

@@ -4,32 +4,45 @@ from . import __config__ as config
 from . import __mysql__
 import nonebot.adapters.onebot.v11.event
 import random
+import time
 
 
 @commands.sign_command.handle()
 @commands.sign_keyword.handle()
 async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent):
-    signed = json.load(open("./data/XDbot/signed.json"))
-    if event.get_user_id() not in signed:
-        signed += [event.get_user_id()]
-        checked_in = __mysql__.get_user_data(int(event.get_user_id()), 4) + 1
-        if checked_in >= 15:
-            add_exp = 15
-        else:
-            add_exp = checked_in + 1
-        add_coin = int(add_exp / 2) + random.randint(5, 15)
-        now_coin = __mysql__.add_coin_for_user(
-            int(event.get_user_id()), add_coin)[2]
-        is_level_update, now_exp, now_level = __mysql__.add_exp_for_user(
-            int(event.get_user_id()), add_exp)
-        del now_exp
-
-        json.dump(signed, open("./data/XDbot/signed.json", "w"))
-        __mysql__.set_user_data(int(event.get_user_id()),
-                                "checked_in", checked_in)
-
-        if is_level_update:
-            await commands.sign_command.send(f"""【等级提升】{now_level - 1} -> {now_level}""", at_sender=True)
-        await commands.sign_command.finish(f"""签到成功！
+    if event.get_plaintext() in ["签到", "/签到", "/sign"]:
+        # 收集基础信息
+        sign_data = json.load(open("./data/XDbot/sign_data.json"))
+        qq = int(event.get_user_id())
+        if qq not in sign_data.keys():
+            sign_data[qq] = 0
+        date = int(time.time() / 86400)
+        # 是否重复签到
+        if sign_data[qq] <= date:
+            sign_data[qq] = date
+            # 是否断签
+            if sign_data[qq] == date - 1:
+                checked_in = __mysql__.get_user_data(
+                    int(event.get_user_id()), 4) + 1
+            else:
+                checked_in = 0
+            # 奖励计算
+            if checked_in >= 15:
+                add_exp = 15
+            else:
+                add_exp = checked_in + 1
+            add_coin = int(add_exp / 2) + random.randint(5, 15)
+            # 保存数据
+            __mysql__.add_coin_for_user(
+                int(event.get_user_id()), add_coin)[2]
+            level_update_data = __mysql__.add_exp_for_user(qq, add_exp)
+            json.dump(sign_data, open("./data/XDbot/sign_data.json", "w"))
+            __mysql__.set_user_data(qq, "checked_in", checked_in)
+            # 返回结果
+            if level_update_data:
+                await commands.sign_command.send(f"""【等级提升】{level_update_data[2] - 1} -> {level_update_data[2]}""", at_sender=True)
+            await commands.sign_command.finish(f"""签到成功！
 您获得了 {add_exp} 经验和 {add_coin} {config.currency_symbol}
 您已连续签到 {checked_in} 天""", at_sender=True)
+        else:
+            await commands.sign_command.finish("您已经签过到了！", at_sender=True)
