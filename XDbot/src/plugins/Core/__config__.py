@@ -93,7 +93,7 @@ class ping:
 
 class command_help:
     # 指令前缀
-    command_start: str = "#"
+    command_start: str = "/"
     # 指令列表追加内容
     list_backhander: str = f"使用 {command_start}help <command> 获取更多信息"
 

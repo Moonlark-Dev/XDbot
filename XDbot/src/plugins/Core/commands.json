@@ -45,14 +45,7 @@
     "name": "ping",
     "info": "PING指定主机",
     "msg": "PING指定主机并返回统计信息",
-    "usage": ["ping <主机>"],
-    "module": "ping"
-  },
-  "ping-f": {
-    "name": "ping-f",
-    "info": "PING主机（详细信息）",
-    "msg": "PING指定主机并显示所有日志",
-    "usage": ["ping-f <主机>"],
+    "usage": ["ping <主机>", "ping-f <主机>"],
     "module": "ping"
   },
   "about": {
