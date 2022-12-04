@@ -13,7 +13,7 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
     if event.get_plaintext() in ["签到", "/签到", "/sign"]:
         # 收集基础信息
         sign_data = json.load(open("./data/XDbot/sign_data.json"))
-        qq = str(event.get_user_id())
+        qq = event.get_user_id()
         if qq not in sign_data.keys():
             sign_data[qq] = 0
         date = int(time.time() / 86400)

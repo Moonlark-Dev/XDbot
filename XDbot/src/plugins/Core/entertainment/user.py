@@ -20,5 +20,5 @@ async def user_status_handle(
     }
     await commands.user_status.finish(f"""「用户信息」
 ID：{user["id"]}
-等级：{user["level"]} [{int(user["exp"]/user["level"]**2*10)*"="}{int(10-(user["exp"]/user["level"]**2*10))*" "}] ({user["exp"]}/{user["level"]**2})
+等级：{user["level"]} [{int(user["exp"]/user["level"]**2*10)*"="}{int(10-(user["exp"]/user["level"]**2*10))*"  "}] ({user["exp"]}/{user["level"]**2})
 {config.currency_name}：{user["coins"]}{config.currency_symbol}""")
