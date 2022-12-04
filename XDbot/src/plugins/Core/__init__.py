@@ -42,6 +42,7 @@ modules = [
     #   "whoat",
     "st",
     "screenshot",
+#    "report_error",
     "jrrp",
     "execute",
     "about",
