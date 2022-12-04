@@ -18,7 +18,7 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
             sign_data[qq] = 0
         date = int(time.time() / 86400)
         # 是否重复签到
-        if sign_data[qq] <= date:
+        if sign_data[qq] < date:
             sign_data[qq] = date
             # 是否断签
             if sign_data[qq] == date - 1:
