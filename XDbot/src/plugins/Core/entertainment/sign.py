@@ -25,7 +25,7 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
                 checked_in = __mysql__.get_user_data(
                     int(qq), 4) + 1
             else:
-                checked_in = 0
+                checked_in = 1
             # 奖励计算
             if checked_in >= 15:
                 add_exp = 15
