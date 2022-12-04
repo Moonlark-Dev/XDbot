@@ -93,10 +93,11 @@ async def guessnum_handle(
             guessed = int(argv[0])
             if guessed == config.guessnum.number[group]:
                 # Add coin
-                qq = int(event.get_user_id())
-                coin = __mysql__.get_user_data(qq, 3) + random.randint(0, 5)
-                __mysql__.set_user_data(qq, "coin", coin)
-                logger.info(f"{qq} now has {coin} {config.currency_symbol}")
+                coin = __mysql__.add_coin_for_user(
+                    int(event.get_user_id()), random.randint(0, 10))[1]
+                level_update_data = __mysql__.add_exp_for_user(
+                    int(event.get_user_id()), 2)
+
                 # Finish
                 answer = config.guessnum.number.pop(group)
                 await commands.guessnum.finish(f"{answer}，回答正确！", at_sender=True)
