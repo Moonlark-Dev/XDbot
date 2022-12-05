@@ -14,12 +14,13 @@ currency_name: str = "VimCoin"
 
 # MYSQL
 class mysql:
-    host: str = "localhost"
+    host: str = "web.xiexilin.cn"
     user: str = "root"
     passwd: str = "091113Dsh"
     database: str = "XDBOT"
     table: dict = {
-        "users": "Users"
+        "users": "Users",
+        "items": "Items"
     }
 
 
@@ -33,3 +34,16 @@ class guessnum:
     max_time: float = 60.0
     # 最后一次触发
     latest_create: dict = {}
+
+
+class randomDrop:
+    # 全局概率
+    global_probability: float = 0.05
+    # 物品概率
+    probability: list = [
+        {"id": 7, "count": 10, "probability": 0.25},
+        {"id": 8, "count": 15, "probability": 0.50},
+        {"id": 2, "count": 5,  "probability": 0.20},
+        {"id": 4, "count": 1,  "probability": 0.03},
+        {"id": 5, "count": 1,  "probability": 0.02}
+    ]

@@ -16,10 +16,9 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
         qq = event.get_user_id()
         if qq not in sign_data.keys():
             sign_data[qq] = 0
-        date = int(time.time() / 86400)
+        date = int(int(time.time()) / 86400)
         # 是否重复签到
         if sign_data[qq] < date:
-            sign_data[qq] = date
             # 是否断签
             if sign_data[qq] == date - 1:
                 checked_in = __mysql__.get_user_data(
@@ -33,6 +32,7 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
                 add_exp = checked_in + 1
             add_coin = int(add_exp / 2) + random.randint(5, 15)
             # 保存数据
+            sign_data[qq] = date
             __mysql__.add_coin_for_user(
                 int(qq), add_coin)[2]
             level_update_data = __mysql__.add_exp_for_user(qq, add_exp)
