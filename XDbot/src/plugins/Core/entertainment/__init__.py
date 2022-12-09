@@ -11,6 +11,7 @@ if "entertainment" not in config.keys():
 submodules = [
     "guessnum",
     "sign",
+    "hijack",
     "user"
 ]
 plugin_modules = {}
