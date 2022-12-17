@@ -27,8 +27,12 @@
     "path": "./data/XDbot/cave_images"
   },
   {
-    "is_dir": true,
-    "path": "./data/XDbot/reply_images"
+    "is_dir": false,
+    "path": "./data/XDbot/reply.json",
+    "default": {
+      "file": false,
+      "text": "{\"review\": {}, \"data\": []}"
+    }
   },
   {
     "is_dir": false,

@@ -24,6 +24,23 @@ def get_user_bag(id):
     return bags[id]
 
 
+def user_get_item(id, item_id, item_count, item_data={}):
+    if item_id == 7:
+        # VimCoin
+        __mysql__.add_coin_for_user(id, item_count)
+        return False
+    elif item_id == 8:
+        # EXP
+        __mysql__.add_exp_for_user(id, item_count)
+        return False
+    else:
+        return True
+
+
+#def use_item(id, item_id, item_count, item_data):
+#    if item_id == 
+
+
 def give_user_item(id, item_id, item_count, item_data={}):
     bags = get_user_bag(id)
     user_has_item = False
@@ -33,15 +50,16 @@ def give_user_item(id, item_id, item_count, item_data={}):
             user_has_item = True
             break
         length += 1
+    if user_get_item(id, item_id, item_count, item_data):
+        if user_has_item:
+            bags[length]["count"] += 1
+        else:
+            bags += [
+                {
+                    "id": item_id,
+                    "count": item_count,
+                    "data": item_data
+                }
+            ]
+        logger.info(f"Gave {item_id}({item_data}) *{item_count} to {id}")
 
-    if user_has_item:
-        bags[length]["count"] += 1
-    else:
-        bags += [
-            {
-                "id": item_id,
-                "count": item_count,
-                "data": item_data
-            }
-        ]
-    logger.info(f"Gave {item_id}({item_data}) *{item_count} to {id}")
