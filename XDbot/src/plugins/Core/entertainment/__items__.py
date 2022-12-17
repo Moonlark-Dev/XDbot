@@ -37,8 +37,8 @@ def user_get_item(id, item_id, item_count, item_data={}):
         return True
 
 
-#def use_item(id, item_id, item_count, item_data):
-#    if item_id == 
+# def use_item(id, item_id, item_count, item_data):
+#    if item_id ==
 
 
 def give_user_item(id, item_id, item_count, item_data={}):
@@ -62,4 +62,3 @@ def give_user_item(id, item_id, item_count, item_data={}):
                 }
             ]
         logger.info(f"Gave {item_id}({item_data}) *{item_count} to {id}")
-
