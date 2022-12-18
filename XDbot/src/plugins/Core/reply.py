@@ -95,7 +95,7 @@ async def img_admin_handle(
     data = json.load(open("./data/XDbot/reply.json"))
     args = str(message).split(" ")
     if args[0] == "y":
-        data["data"] += [data["review"].pop(args[1])]
+        data["data"] += data["review"].pop(args[1])
     elif args[0] == "n":
         data["review"].pop(args[1])
     json.dump(data, open("./data/XDbot/reply.json", "w"))
