@@ -39,7 +39,7 @@ async def sign_handle(event: nonebot.adapters.onebot.v11.event.GroupMessageEvent
             json.dump(sign_data, open("./data/XDbot/sign_data.json", "w"))
             __mysql__.set_user_data(int(qq), "checked_in", checked_in)
             # 返回结果
-            if level_update_data:
+            if level_update_data[0]:
                 await commands.sign_command.send(f"""【等级提升】{level_update_data[2] - 1} -> {level_update_data[2]}""", at_sender=True)
             await commands.sign_command.finish(f"""签到成功！
 您获得了 {add_exp} 经验和 {add_coin} {config.currency_symbol}
