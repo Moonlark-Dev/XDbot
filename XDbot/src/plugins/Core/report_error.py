@@ -7,7 +7,7 @@ def debug(func):
     def decorator():
         try:
             func()
-        except:
+        except BaseException:
             e = traceback.format_exc()
             bot = nonebot.get_bot()
             for i in nonebot.get_driver().config.superusers:

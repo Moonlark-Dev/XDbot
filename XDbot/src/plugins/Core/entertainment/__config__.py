@@ -43,7 +43,7 @@ class randomDrop:
     probability: list = [
         {"id": 7, "count": 10, "probability": 0.25},
         {"id": 8, "count": 15, "probability": 0.50},
-        {"id": 2, "count": 5,  "probability": 0.20},
-        {"id": 4, "count": 1,  "probability": 0.03},
-        {"id": 5, "count": 1,  "probability": 0.02}
+        {"id": 2, "count": 5, "probability": 0.20},
+        {"id": 4, "count": 1, "probability": 0.03},
+        {"id": 5, "count": 1, "probability": 0.02}
     ]

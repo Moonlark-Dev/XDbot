@@ -18,7 +18,7 @@ plugin_modules = {}
 
 # Import modules
 logger.info("Entertainment: Loading submodules . . .")
-logger.info("="*30)
+logger.info("=" * 30)
 
 for module in submodules:
     if module not in config["entertainment"]["disabled"]:
@@ -35,5 +35,5 @@ logger.success(
     f"Loaded {plugin_modules.keys().__len__()}/{submodules.__len__()} submodules.")
 
 
-logger.info("="*30)
+logger.info("=" * 30)
 logger.info("Entertainment: Initialization complete!")

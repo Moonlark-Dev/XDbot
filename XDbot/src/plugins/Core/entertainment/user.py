@@ -10,7 +10,7 @@ import nonebot.params
 async def user_status_handle(
     event: nonebot.adapters.onebot.v11.event.MessageEvent
 ):
-    print(114514*2)
+    print(114514 * 2)
     qq = int(event.get_user_id())
     user = {
         "id": __mysql__.get_user_data(qq, 0),

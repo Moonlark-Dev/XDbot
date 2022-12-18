@@ -103,12 +103,13 @@ async def img_admin_handle(
 
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
-    if random.random() <= 0.10 and time.time() - config.reply.latest_send >= config.reply.send_sleep:
+    if random.random() <= 0.10 and time.time() - \
+            config.reply.latest_send >= config.reply.send_sleep:
         config.reply.latest_send = time.time()
         images = json.load(open("./data/XDbot/reply.json"))
 
         if random.random() <= 0.25 and images["data"].__len__() > 20:
-            images["data"] = images["data"][-int(len(images["data"])/2):]
+            images["data"] = images["data"][-int(len(images["data"]) / 2):]
             json.dump(images, open("./data/XDbot/reply.json"))
 
         image = random.choice(images)

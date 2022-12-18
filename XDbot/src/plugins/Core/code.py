@@ -54,7 +54,7 @@ async def code_handle(
     args = str(message)
     if not args:
         return await commands.code.finish("参数不足")
-    code = args[args.find("\n")+1:]
+    code = args[args.find("\n") + 1:]
     language = args.split("\n")[0].split(" ")[0]
     if args.split("\n")[0].find("-i") != -1:
         stdin = args.split("\n")[0].replace(

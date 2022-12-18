@@ -61,7 +61,8 @@ async def guessnum_handle(
     if argv[0] == "start":
         if group not in config.guessnum.number.keys():
             if group in config.guessnum.latest_create.keys():
-                if time.time() - config.guessnum.latest_create[group] <= config.guessnum.max_time:
+                if time.time() - \
+                        config.guessnum.latest_create[group] <= config.guessnum.max_time:
                     return await commands.guessnum.finish(f"冷却中，请稍候！")
             config.guessnum.latest_create[group] = time.time()
             if __mysql__.get_user_data(int(event.get_user_id()), 3) >= 1:

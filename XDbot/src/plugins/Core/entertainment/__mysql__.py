@@ -17,7 +17,7 @@ def connect():
 def get_user_data(id, item):
     """
     get_user_data(id: int, item: int) -> Any
-    Item: 
+    Item:
         [0] ID, [1] Level, [2] EXP, [3] Coin, [4] Chicked-In
     """
     database, cursor = connect()

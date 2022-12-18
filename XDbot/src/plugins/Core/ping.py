@@ -13,7 +13,7 @@ class new_stdout:
     def write(self, text):
         self.print_text += text
         logger.info(text)
-    
+
     def fileno(self):
         pass
 
