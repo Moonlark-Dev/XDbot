@@ -72,7 +72,7 @@ async def random_save_pictrue(
     data = json.load(open("./data/XDbot/reply.json"))
 
     if message.find("subType=1") != -1:
-        probability = 0.15
+        probability = 0.25
     else:
         probability = 0.05
     # logger.info(get_num_of_repetion(message, "[CQ:image"))

@@ -14,10 +14,10 @@ currency_name: str = "VimCoin"
 
 # MYSQL
 class mysql:
-    host: str = "web.xiexilin.cn"
-    user: str = "XDBOT"
-    passwd: str = "091113Dsh"
-    database: str = "xdbot"
+    host: str = ""
+    user: str = ""
+    passwd: str = ""
+    database: str = ""
     table: dict = {
         "users": "Users",
         "items": "Items"
