@@ -113,7 +113,7 @@ async def random_send_pictrue():
             images["data"] = images["data"][-int(len(images["data"]) / 2):]
             json.dump(images, open("./data/XDbot/reply.json"))
 
-        image = random.choice(images)
+        image = random.choice(images["data"])
         await commands.random_send_pic.send(
             nonebot.adapters.onebot.v11.Message(
                 image
