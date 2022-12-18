@@ -98,6 +98,7 @@ async def img_admin_handle(
         data["data"] += [data["review"].pop(args[1])]
     elif args[0] == "n":
         data["review"].pop(args[1])
+    json.dump(open("./data/XDbot/reply.json", "w"))
     await commands.img_admin.finish("完成")
 
 
