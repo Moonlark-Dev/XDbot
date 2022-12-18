@@ -34,7 +34,7 @@ Subject: {email_subject}
                 f"Sending {sending_message} to {to_addrs} (use {config.email.smtp_user})")
             # 发送邮件
             try:
-                smtp = smtplib.SMTP(config.email.smtp_server,
+                smtp = smtplib.SMTP(config.email.smtp_server_host,
                                     config.email.smtp_server_port)
                 smtp.connect(config.email.smtp_server_host,
                              config.email.smtp_server_port)
