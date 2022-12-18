@@ -43,6 +43,18 @@
     }
   },
   {
+    "is_dir": true,
+    "path": "./data/XDbot/bags"
+  },
+  {
+    "is_dir": false,
+    "path": "./data/XDbot/bags/bags.json",
+    "default": {
+      "file": false,
+      "text": "{}"
+    }
+  },
+  {
     "is_dir": false,
     "path": "./data/XDbot/plugins.json",
     "default": {
