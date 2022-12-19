@@ -27,6 +27,19 @@ XDbot 是一个基于 nonebot 2 / onebot v11 的多功能 QQ 机器人
 
 > 我们不建议您自行搭建 XDbot，但您仍然可以通过 [XDbot Wiki](https://github.com/This-is-XiaoDeng/XDbot/wiki) 获取搭建方法
 
+## 版本
+
+XDbot 的版本号由 4 个部分组成
+
+```bash
+2.4.5-11
+大版本号.版本号.补丁版本号-提交号
+```
+
+为了方便（我记不住），XDbot 中基本不会写提交号
+
+> Tips: 在 XDbot 1.x 中，版本号是`大版本号.小版本号.补丁号（相当于2.x的提交号）`，如`1.3.1`
+
 
 ## 贡献
 
