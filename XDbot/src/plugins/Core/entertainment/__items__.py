@@ -27,7 +27,7 @@ def get_user_bag(user_id):
 
 def save_user_bag(user_id, bag):
     bags = json.load(open("./data/XDbot/bags/bags.json"))
-    bags[user_id] = bat
+    bags[user_id] = bag
     json.dump(bags, open("./data/XDbot/bags/bags.json", "w"))
     # return bags[user_id]
 
@@ -66,15 +66,17 @@ def give_user_item(user_id, item_id, item_count, item_data={}):
                 bag.pop(length)
                 logger.info(
                     f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
+                save_user_bag(user_id, bag)
                 return True
             elif bag[length]["count"] < 0:
-                bag[length]["count"] -= item_count
+                # bag[length]["count"] -= item_count
                 logger.warning(
                     f"Cannot give {item_id}({item_data}) *{item_count} to {user_id}: User doesn't have enough items")
                 return False
             else:
                 logger.info(
                     f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
+                save_user_bag(user_id, bag)
                 return True
         elif item_count < 0:
             logger.warning(
@@ -88,12 +90,14 @@ def give_user_item(user_id, item_id, item_count, item_data={}):
                     "data": item_data
                 }
             ]
+            logger.info(f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
+            save_user_bag(user_id, bag)
             return True
-        logger.info(f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
     else:
         logger.info(f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
+        # save_user_bag(user_id, bag)
         return True
-    save_user_bag(user_id, bag)
+    
 
 
 def user_use_item(user_id, item_id, item_data={}):

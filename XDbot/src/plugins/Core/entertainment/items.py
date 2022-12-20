@@ -41,3 +41,35 @@ async def get_bag_handle(
         if item["data"] != {}:
             answer += " (NBT)"
     await commands.get_bag.finish(answer)
+
+
+@commands.list_items.handle()
+async def list_item_handle():
+    answer = "【物品列表】\n"
+    item_list = items.get_items()
+    # length = 1
+    for item in item_list:
+        answer += f"""「{item[1]}」(ID: {item[0]})
+    [{item[3]}] {item[2]}\n"""
+    await commands.get_bag.finish(answer)
+
+
+@commands.give_item.handle()
+async def give_item_handle(
+    message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
+):
+    msg = message.extract_plain_text().split(" ")
+    to_user = msg[0].replace("[CQ:at,qq=", "").replace("]", "")
+    item_id = int(msg[1])
+    if len(msg) >= 3:
+        count = int(msg[2])
+    else:
+        count = 1
+    if len(msg) >= 4:
+        nbt = json.loads(msg[4].replace("%20", " "))
+    else:
+        nbt = {}
+    if items.give_user_item(to_user, item_id, count, nbt):
+        await commands.give_item.finish("完成")
+    else:
+        await commands.give_item.finish("失败")
