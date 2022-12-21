@@ -139,6 +139,21 @@
     "usage": ["reboot"],
     "module": "reboot"
   },
+  "img": {
+    "name": "img",
+    "info": "图片操作(S)",
+    "msg": "智能回复图片操作",
+    "usage": [
+      "img y <图片ID>：通过图片（审核库）",
+      "img n <图片ID>：删除图片（审核库）",
+      "img w：图片列表（审核库）",
+      "img p：通过所有（审核库）",
+      "img l：图片列表",
+      "img a <图片>：添加图片",
+      "img r <图片>：删除图片",
+      "img c：清空图库"
+    ]
+  },
   "et": {
     "name": "et",
     "info": "娱乐模块帮助",
@@ -146,7 +161,11 @@
     "usage": [
       "guess：猜数字游戏",
       "sign：每日签到",
-      "user-info：获取用户信息"
+      "user-info：获取用户信息",
+      "use <物品位置> <数量>：使用物品",
+      "bag：获取背包"
+      "list：获取物品列表(S)",
+      "give <ID> <物品ID> <数量> [<数据(json)>]：给予物品(S)"
     ],
     "module": "entertainment"
   }

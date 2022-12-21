@@ -5,7 +5,7 @@ import os
 # 机器人昵称
 bot_nickname: str = "XDbot"
 # 程序版本，请不要修改此项
-version: str = "2.4.5"
+version: str = "2.4.6"
 
 
 # Plugin Config
@@ -55,7 +55,9 @@ class reply:
     # 发图冷却时间
     send_sleep: int = 60
     # 上次发图时间
-    latest_send: int = time.time()
+    latest_send: int = int(time.time())
+    # 审核群
+    review_group: str = "598443695"
 
 
 class cave_reply:

@@ -71,8 +71,8 @@ async def random_save_pictrue(
     message = str(event.get_message())
     data = json.load(open("./data/XDbot/reply.json"))
 
-    if message.find("subType=1") != -1:
-        probability = 0.25
+    if message.find("subType=1") == 0:
+        probability = 0.20
     else:
         probability = 0.05
     # logger.info(get_num_of_repetion(message, "[CQ:image"))
@@ -80,10 +80,10 @@ async def random_save_pictrue(
             and message.find("[CQ:image") == 0\
             and message[-1] == "]"\
             and random.random() <= probability:
-        logger.info(f"Downloading images in {message}")
+        # logger.info(f"Downloading images in {message}")
         image_id = str(len(data["review"].keys()))
         data["review"][image_id] = [message]
-        await bot.send_group_msg(message=f"{message}来自{event.get_session_id().split('_')[1]}的{event.sender.user_id}\n使用 /img y {image_id} 通过\n使用 /img n {image_id} 删除", group_id="598443695")
+        await bot.send_group_msg(message=f"{message}来自{event.get_session_id().split('_')[1]}的{event.sender.user_id}\n使用 {config.command_help.command_start}img y {image_id} 通过\n使用 {config.command_help.command_start}img n {image_id} 删除", group_id=config.reply.review_group)
         json.dump(data, open("./data/XDbot/reply.json", "w"))
         await commands.random_save_pic.send("好图，我的了")
 
@@ -98,6 +98,23 @@ async def img_admin_handle(
         data["data"] += data["review"].pop(args[1])
     elif args[0] == "n":
         data["review"].pop(args[1])
+    elif args[0] == "w":
+        review_list = data["review"]
+        for image in review_list.keys():
+            await commands.img_admin.send(nonebot.adapters.onebot.v11.Message(f"ID: {image}\n{review_list[image][0]}"))
+    elif args[0] == "r":
+        data["data"].pop(int(args[1]))
+    elif args[0] == "l":
+        length = 0
+        for image in data["data"]:
+            await commands.img_admin.send(message=nonebot.adapters.onebot.v11.Message(f"ID: {length}\n{image}"))
+            length += 1
+    elif args[0] == "a":
+        data["data"] += args[1]
+    elif args[0] == "p":
+        image_keys = data["review"].copy().keys()
+        for image_id in image_keys:
+            data["data"] += data["review"].pop(image_id)
     json.dump(data, open("./data/XDbot/reply.json", "w"))
     await commands.img_admin.finish("完成")
 

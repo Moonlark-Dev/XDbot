@@ -103,12 +103,15 @@ def give_user_item(user_id, item_id, item_count, item_data={}):
 def user_use_item(user_id, item_id, item_data={}):
     # 每日 VimCoin 礼包
     if item_id == 0:
-        if random.random() <= 0.20:
-            count = random.randint(0, 50)
-        elif random.random() <= 0.10:
-            count = random.randint(25, 50)
+        if random.random() <= 0.15:
+            if random.random() <= 0.20:
+                count = random.randint(0, 50)
+            elif random.random() <= 0.10:
+                count = random.randint(25, 50)
+            else:
+                count = random.randint(0, 25)
         else:
-            count = random.randint(0, 25)
+            count = int(random.random()*7.1*random.random()*7.1)
         give_user_item(user_id, 7, count)
         return f"每日礼包：你获得了{count} {config.currency_symbol}"
     # 每日 EXP 礼包
