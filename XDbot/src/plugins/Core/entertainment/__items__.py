@@ -90,28 +90,30 @@ def give_user_item(user_id, item_id, item_count, item_data={}):
                     "data": item_data
                 }
             ]
-            logger.info(f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
+            logger.info(
+                f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
             save_user_bag(user_id, bag)
             return True
     else:
         logger.info(f"Gave {item_id}({item_data}) *{item_count} to {user_id}")
         # save_user_bag(user_id, bag)
         return True
-    
 
 
 def user_use_item(user_id, item_id, item_data={}):
     # 每日 VimCoin 礼包
     if item_id == 0:
-        if random.random() <= 0.15:
-            if random.random() <= 0.20:
+        if random.random() <= 0.80:
+            if random.random() <= 0.10:
                 count = random.randint(0, 50)
-            elif random.random() <= 0.10:
+            elif random.random() <= 0.05:
                 count = random.randint(25, 50)
-            else:
+            elif random.random() <= 0.15:
                 count = random.randint(0, 25)
+            else:
+                count = random.randint(0, 10)
         else:
-            count = int(random.random()*7.1*random.random()*7.1)
+            count = int(random.random() * 7.1 * random.random() * 7.1)
         give_user_item(user_id, 7, count)
         return f"每日礼包：你获得了{count} {config.currency_symbol}"
     # 每日 EXP 礼包
@@ -128,12 +130,19 @@ def user_use_item(user_id, item_id, item_data={}):
 
 def use_item(user_id, item_pos, count):
     bag = get_user_bag(user_id)
-    item = bag[item_pos]
-    if give_user_item(user_id, item["id"], -1, item["data"]):
-        r = user_use_item(user_id, item["id"], item["data"])
-        if count > 1:
-            return use_item(user_id, item_pos, count - 1) + [r]
+    try:
+        item = bag[item_pos]
+        if give_user_item(user_id, item["id"], -1, item["data"]):
+            r = user_use_item(user_id, item["id"], item["data"])
+            if count > 1:
+                return use_item(user_id, item_pos, count - 1) + [r]
+            else:
+                return [r]
         else:
-            return [r]
-    else:
-        return ["114514"]
+            return ["114514"]
+    except Exception as e:
+        return [str(e)]
+
+
+# def user_buy_item(user_id, item_id, count):
+#

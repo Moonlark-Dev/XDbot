@@ -1,4 +1,4 @@
-from . import __commands__ as commands
+from . import ommands__ as commands
 from . import __config__ as config
 from . import __mysql__
 from nonebot.log import logger
@@ -63,7 +63,7 @@ async def guessnum_handle(
             if group in config.guessnum.latest_create.keys():
                 if time.time() - \
                         config.guessnum.latest_create[group] <= config.guessnum.max_time:
-                    return await commands.guessnum.finish(f"冷却中，请稍候！")
+                    return await commands.guessnum.finish("冷却中，请稍候！")
             config.guessnum.latest_create[group] = time.time()
             if __mysql__.get_user_data(int(event.get_user_id()), 3) >= 1:
                 __mysql__.add_coin_for_user(int(event.get_user_id()), -1)
@@ -78,8 +78,8 @@ async def guessnum_handle(
         else:
             await commands.guessnum.finish("游戏已存在")
     # Ranking
-    elif argv[0] == "list":
-        await commands.guessnum.finish("敬请期待")
+    # elif argv[0] == "list":
+    #     await commands.guessnum.finish("敬请期待")
     # Stop Game
     # elif argv[0] == "stop":
     #    try:
@@ -94,9 +94,9 @@ async def guessnum_handle(
             guessed = int(argv[0])
             if guessed == config.guessnum.number[group]:
                 # Add coin
-                coin = __mysql__.add_coin_for_user(
+                __mysql__.add_coin_for_user(
                     int(event.get_user_id()), random.randint(0, 10))[1]
-                level_update_data = __mysql__.add_exp_for_user(
+                __mysql__.add_exp_for_user(
                     int(event.get_user_id()), 2)
 
                 # Finish

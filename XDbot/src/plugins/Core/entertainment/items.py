@@ -14,33 +14,50 @@ async def use_item_handle(
     event: nonebot.adapters.onebot.v11.event.MessageEvent,
     message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
+    output = ""
     try:
         msg = message.extract_plain_text().split(" ")
         output = items.use_item(event.get_user_id(), int(msg[0]), int(msg[1]))
     except ValueError:
-        await commands.use_item.finish("无效参数")
+        await commands.use_item.send("无效参数")
     except IndexError:
-        await commands.use_item.finish(f"索引失败")
+        await commands.use_item.send("索引失败")
     except Exception as e:
-        await commands.use_item.finish(f"未知错误：{e}")
-    else:
-        for out in output:
-            await commands.use_item.send(out)
+        await commands.use_item.send(f"未知错误：{e}")
+    for out in output:
+        await commands.use_item.send(out)
 
 
 @commands.get_bag.handle()
 async def get_bag_handle(
-    event: nonebot.adapters.onebot.v11.event.MessageEvent
+    event: nonebot.adapters.onebot.v11.event.MessageEvent,
+    message: nonebot.adapters.onebot.v11.Message = nonebot.params.CommandArg()
 ):
     qq = event.get_user_id()
-    answer = f"{qq}的背包："
-    bag = items.get_user_bag(qq)
-    length = 0
-    for item in bag:
-        answer += f"\n  [{length}] {items.get_item(item['id'])[1]} x{item['count']}"
-        if item["data"] != {}:
-            answer += " (NBT)"
-    await commands.get_bag.finish(answer)
+    msg = message.extract_plain_text().split(" ")
+    # print(msg)
+    if msg == [""]:
+        answer = f"{qq}的背包："
+        bag = items.get_user_bag(qq)
+        length = 0
+        for item in bag:
+            answer += f"\n[{length}] {items.get_item(item['id'])[1]} x{item['count']}"
+            if item["data"] != {}:
+                answer += " (NBT)"
+        await commands.get_bag.finish(answer)
+    elif msg[0] == "view":
+        # answer = ""
+        bag = items.get_user_bag(qq)
+        item = bag[int(msg[1])]
+        if "name" in item["data"].keys():
+            name = item["data"]["name"]
+        else:
+            name = items.get_item(item["id"])[1]
+        answer = f"「{name}」\n当前拥有：{item['count']}\n{items.get_item(item['id'])[2]}"
+        for nbt in item["data"].keys():
+            if nbt == "info":
+                answer += f"\n\t\n{item['data']['info']}"
+        await commands.get_bag.finish(nonebot.adapters.onebot.v11.Message(answer))
 
 
 @commands.list_items.handle()
@@ -66,7 +83,7 @@ async def give_item_handle(
     else:
         count = 1
     if len(msg) >= 4:
-        nbt = json.loads(msg[4].replace("%20", " "))
+        nbt = json.loads(msg[3].replace("%20", " "))
     else:
         nbt = {}
     if items.give_user_item(to_user, item_id, count, nbt):
