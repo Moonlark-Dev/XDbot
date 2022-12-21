@@ -34,6 +34,7 @@ config = json.load(open("./data/XDbot/plugins.json"))
 modules = [
     "reboot",
     "messenger",
+    "search",
     "system",
     "status",
     "geturl",

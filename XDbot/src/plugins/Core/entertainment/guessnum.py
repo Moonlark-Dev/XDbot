@@ -1,4 +1,4 @@
-from . import ommands__ as commands
+from . import __commands__ as commands
 from . import __config__ as config
 from . import __mysql__
 from nonebot.log import logger
