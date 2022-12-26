@@ -91,7 +91,7 @@ async def img_admin_handle(
     data = json.load(open("./data/XDbot/reply.json"))
     args = str(message).split(" ")
     if args[0] == "y":
-        data["data"] += data["review"].pop(args[1])
+        data["data"].append(data["review"].pop(args[1]))
     elif args[0] == "n":
         data["review"].pop(args[1])
     elif args[0] == "w":
@@ -106,11 +106,11 @@ async def img_admin_handle(
             await commands.img_admin.send(message=nonebot.adapters.onebot.v11.Message(f"ID: {length}\n{image}"))
             length += 1
     elif args[0] == "a":
-        data["data"] += args[1]
+        data["data"].append(args[1])
     elif args[0] == "p":
         image_keys = data["review"].copy().keys()
         for image_id in image_keys:
-            data["data"] += data["review"].pop(image_id)
+            data["data"].append(data["review"].pop(image_id))
     json.dump(data, open("./data/XDbot/reply.json", "w"))
     await commands.img_admin.finish("完成")
 
