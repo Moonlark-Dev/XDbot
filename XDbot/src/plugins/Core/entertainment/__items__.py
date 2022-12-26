@@ -126,6 +126,15 @@ def user_use_item(user_id, item_id, item_data={}):
         count = random.randint(20, 100)
         give_user_item(user_id, 8, count)
         return f"你获得了{count} {config.currency_symbol}"
+    # 游戏币
+    elif item_id == 10:
+        if give_user_item(user_id, item["id"], -1, item["data"]):
+            return True
+        elif __mysql__.get_user_data(user_id, 3) >= 5:
+            __mysql__.add_coin_for_user(user_id, -5)
+            return True
+        else:
+            return False
 
 
 def use_item(user_id, item_pos, count):
@@ -146,3 +155,6 @@ def use_item(user_id, item_pos, count):
 
 # def user_buy_item(user_id, item_id, count):
 #
+
+def start_game(user_id):
+    user_use_item(user_id, 10)
