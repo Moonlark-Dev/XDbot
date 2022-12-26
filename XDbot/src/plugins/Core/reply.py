@@ -16,14 +16,12 @@ import httpx
 
 @commands.to_me.handle()
 async def to_me_handle():
-    if random.random() <= 0.25:
+    if random.random() <= 0.10:
         await commands.to_me.send("？")
-    elif random.random() <= 0.25:
-        await commands.to_me.send("你干嘛~~~~~~~~~~~~~~~~哎哟~~~~~~~~~")
 
-
+"""
 async def download(url, name):
-    """Download file from url and save to name"""
+    Download file from url and save to fname
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         with open(f"./data/XDbot/reply_images/{name}", "wb") as f:
@@ -51,7 +49,7 @@ async def get_image_cqcode(message, start_search=0):
         return get_image_cqcode(message, cqcode_end)
     else:
         return
-
+"""
 
 def get_num_of_repetion(string: str, text: str, start: int = 0):
     size = string.find(text, start)
@@ -71,15 +69,13 @@ async def random_save_pictrue(
     message = str(event.get_message())
     data = json.load(open("./data/XDbot/reply.json"))
 
-    if message.find("subType=1") == 0:
-        probability = 0.20
-    else:
-        probability = 0.05
+
     # logger.info(get_num_of_repetion(message, "[CQ:image"))
     if get_num_of_repetion(message, "[CQ:image") == 1\
+            and message.find("subType=1") != -1\
             and message.find("[CQ:image") == 0\
             and message[-1] == "]"\
-            and random.random() <= probability:
+            and random.random() <= 0.05:
         # logger.info(f"Downloading images in {message}")
         image_id = str(len(data["review"].keys()))
         data["review"][image_id] = [message]
@@ -121,12 +117,12 @@ async def img_admin_handle(
 
 @commands.random_send_pic.handle()
 async def random_send_pictrue():
-    if random.random() <= 0.10 and time.time() - \
+    if random.random() <= 0.05 and time.time() - \
             config.reply.latest_send >= config.reply.send_sleep:
         config.reply.latest_send = time.time()
         images = json.load(open("./data/XDbot/reply.json"))
 
-        if random.random() <= 0.25 and images["data"].__len__() > 20:
+        if random.random() <= 0.15 and images["data"].__len__() > 20:
             images["data"] = images["data"][-int(len(images["data"]) / 2):]
             json.dump(images, open("./data/XDbot/reply.json"))
 

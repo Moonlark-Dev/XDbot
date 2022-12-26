@@ -53,7 +53,7 @@ class cave:
 
 class reply:
     # 发图冷却时间
-    send_sleep: int = 60
+    send_sleep: int = 180
     # 上次发图时间
     latest_send: int = int(time.time())
     # 审核群
